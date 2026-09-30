@@ -48,7 +48,7 @@ export const education = [
     id: 'pte-academic',
     degree: 'PTE Academic',
     score: '89',
-    year: '2024',
+    year: '2026',
     description: 'Pearson Test of English Academic — Overall score 89.',
   },
 ];
