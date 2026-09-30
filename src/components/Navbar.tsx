@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, FileText } from 'lucide-react';
+import { Logo } from './Logo';
 import { cn } from '@/lib/utils';
 
 const navItems = [
@@ -43,10 +44,10 @@ export function Navbar() {
       <nav className="container-custom h-full flex items-center justify-between" aria-label="Main navigation">
         <a
           href="#"
-          className="text-heading-sm font-medium tracking-tight text-textPrimary hover:text-accent transition-colors duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-md px-2 py-1"
+          className="rounded-lg transition-transform duration-fast hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           aria-label="Shoumik Aggarwal - Home"
         >
-          SHOUMIK AGGARWAL
+          <Logo className="w-9 h-9" />
         </a>
 
         <div className="hidden lg:flex items-center gap-8">
