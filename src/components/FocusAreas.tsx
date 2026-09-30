@@ -45,6 +45,10 @@ export function FocusAreas() {
           transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
+          <span className="kicker">
+            <span className="kicker-dot" aria-hidden="true" />
+            02 // Focus
+          </span>
           <h2 id="focus-heading" className="heading-lg mb-4">
             Currently Exploring
           </h2>

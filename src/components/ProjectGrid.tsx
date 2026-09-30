@@ -36,6 +36,10 @@ export function ProjectGrid() {
         >
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10">
             <div>
+              <span className="kicker">
+                <span className="kicker-dot" aria-hidden="true" />
+                03 // Work
+              </span>
               <h2 id="projects-heading" className="heading-lg mb-2">
                 Featured Projects
               </h2>

@@ -17,6 +17,10 @@ export function About() {
           transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
           className="max-w-3xl mx-auto text-center"
         >
+          <span className="kicker">
+            <span className="kicker-dot" aria-hidden="true" />
+            01 // Profile
+          </span>
           <h2 id="about-heading" className="heading-lg mb-6">
             About Me
           </h2>

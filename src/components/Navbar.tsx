@@ -36,7 +36,7 @@ export function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 h-16 lg:h-20 transition-all duration-normal',
         isScrolled
-          ? 'bg-background/80 backdrop-blur-md border-b border-border shadow-sm'
+          ? 'bg-background/70 backdrop-blur-xl border-b border-border/80 shadow-[0_8px_32px_-12px_rgb(0_0_0/0.6)]'
           : 'bg-transparent'
       )}
       role="banner"
@@ -47,7 +47,7 @@ export function Navbar() {
           className="rounded-lg transition-transform duration-fast hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           aria-label="Shoumik Aggarwal - Home"
         >
-          <Logo className="w-9 h-9" />
+          <Logo className="w-12 h-12" />
         </a>
 
         <div className="hidden lg:flex items-center gap-8">

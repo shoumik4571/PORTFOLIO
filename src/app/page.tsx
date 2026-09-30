@@ -10,11 +10,14 @@ import { Skills } from '@/components/Skills';
 import { Education } from '@/components/Education';
 import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
+import { ScrollProgress } from '@/components/ScrollProgress';
 import { experience } from '@/data/experience';
 
 export default function Home() {
   return (
     <>
+      <ScrollProgress />
+      <div className="noise-overlay" aria-hidden="true" />
       <Navbar />
       <main id="main-content" className="min-h-screen">
         <Hero />

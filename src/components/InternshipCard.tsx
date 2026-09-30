@@ -24,6 +24,10 @@ export function InternshipCard({ experience }: InternshipCardProps) {
           className="max-w-3xl mx-auto"
         >
           <div className="text-center mb-10">
+            <span className="kicker">
+              <span className="kicker-dot" aria-hidden="true" />
+              05 // Next role
+            </span>
             <h2 id="internship-heading" className="heading-lg mb-4">
               Upcoming Internship
             </h2>

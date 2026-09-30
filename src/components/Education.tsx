@@ -78,6 +78,10 @@ export function Education() {
           transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
+          <span className="kicker">
+            <span className="kicker-dot" aria-hidden="true" />
+            08 // Background
+          </span>
           <h2 id="education-heading" className="heading-lg mb-4">
             Education
           </h2>

@@ -19,6 +19,10 @@ export function Skills() {
           transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
+          <span className="kicker">
+            <span className="kicker-dot" aria-hidden="true" />
+            07 // Stack
+          </span>
           <h2 id="skills-heading" className="heading-lg mb-4">
             Technical Skills
           </h2>

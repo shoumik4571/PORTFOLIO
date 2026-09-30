@@ -25,9 +25,11 @@ export function Hero() {
       className="relative min-h-screen flex items-center justify-center pt-16 lg:pt-20 overflow-hidden"
       aria-labelledby="hero-title"
     >
-      <div className="absolute inset-0 grid-pattern opacity-30" aria-hidden="true" />
+      <div className="absolute inset-0 grid-pattern grid-fade opacity-60" aria-hidden="true" />
 
-      <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent opacity-20" aria-hidden="true" />
+      <div className="aurora-blob aurora-a left-[-10%] top-[-10%] w-[480px] h-[480px] bg-accent/10" aria-hidden="true" />
+      <div className="aurora-blob aurora-b right-[-12%] bottom-[-15%] w-[560px] h-[560px] bg-accent/[0.07]" aria-hidden="true" />
+      <div className="absolute inset-x-0 top-0 hairline-top opacity-70" aria-hidden="true" />
 
       <div className="container-custom relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -37,17 +39,16 @@ export function Hero() {
             transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
             className="space-y-8"
           >
-            <motion.span
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
-              className="inline-flex items-center gap-2 text-caption font-medium text-accent uppercase tracking-wider"
             >
-              <span className="relative">
-                <span className="absolute inset-0 bg-accent/20 blur-[4px]" aria-hidden="true" />
-                <span className="relative">Early-Career Developer</span>
+              <span className="kicker">
+                <span className="kicker-dot" aria-hidden="true" />
+                Early-Career Developer · Open to opportunities
               </span>
-            </motion.span>
+            </motion.div>
 
             <motion.h1
               id="hero-title"
@@ -63,7 +64,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
-              className="heading-md text-textSecondary font-normal"
+              className="heading-md font-normal gradient-accent text-glow-accent"
             >
               AI & SOFTWARE DEVELOPER
             </motion.p>
@@ -81,9 +82,10 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55, duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
-              className="body text-textMuted max-w-md"
+              className="body text-textMuted max-w-md font-mono text-[0.9rem]"
             >
-              Early-career developer focused on AI, software development, web technologies, and cybersecurity.
+              <span className="text-accent">$</span> Early-career developer focused on AI, software
+              development, web technologies, and cybersecurity.
             </motion.p>
 
             <motion.div
@@ -133,27 +135,15 @@ export function Hero() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
             className="relative hidden lg:block"
           >
+            <div className="absolute inset-0 aurora-blob aurora-b left-[10%] top-[10%] w-[80%] h-[80%] bg-accent/10" aria-hidden="true" />
             <div className="relative aspect-square max-w-md mx-auto">
               <TerminalVisual />
             </div>
-
-            <motion.div
-              animate={{
-                boxShadow: [
-                  '0 0 0 1px rgba(0,212,170,0.1), 0 0 40px rgba(0,212,170,0.05)',
-                  '0 0 0 1px rgba(0,212,170,0.2), 0 0 60px rgba(0,212,170,0.1)',
-                  '0 0 0 1px rgba(0,212,170,0.1), 0 0 40px rgba(0,212,170,0.05)',
-                ],
-              }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute inset-0 rounded-2xl pointer-events-none"
-              aria-hidden="true"
-            />
           </motion.div>
         </div>
       </div>
@@ -161,7 +151,7 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
+        transition={{ delay: 1.4, duration: 0.8 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
         aria-hidden="true"
       >
@@ -192,25 +182,30 @@ function TerminalVisual() {
     { prompt: '', command: '', output: '> Initializing AI agent...' },
     { prompt: '', command: '', output: '> Loading model weights...' },
     { prompt: '', command: '', output: '> Ready. Awaiting input.' },
-    { prompt: '~/projects', command: '_', output: '' },
   ];
 
   return (
-    <div className="card-elevated h-full flex flex-col overflow-hidden">
+    <div className="card-elevated terminal-glow h-full flex flex-col overflow-hidden">
       <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-surface">
         <div className="flex gap-1.5">
           <div className="w-3 h-3 rounded-full bg-red-500/60" aria-hidden="true" />
           <div className="w-3 h-3 rounded-full bg-yellow-500/60" aria-hidden="true" />
           <div className="w-3 h-3 rounded-full bg-green-500/60" aria-hidden="true" />
         </div>
-        <div className="flex-1 text-center text-caption text-textMuted font-mono">terminal</div>
+        <div className="flex-1 text-center text-caption text-textMuted font-mono">shoumik — zsh</div>
         <div className="w-12" />
       </div>
 
       <div className="flex-1 overflow-y-auto p-4 font-mono text-body-sm text-textSecondary">
         <div className="space-y-1.5">
           {lines.map((line, index) => (
-            <div key={index} className="flex gap-2 items-baseline">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: -8 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.9 + index * 0.18, duration: 0.35, ease: 'easeOut' }}
+              className="flex gap-2 items-baseline"
+            >
               {line.prompt && (
                 <>
                   <span className="text-accent font-medium whitespace-nowrap">{line.prompt}</span>
@@ -223,8 +218,19 @@ function TerminalVisual() {
               {line.output && (
                 <span className="text-textMuted whitespace-pre-wrap">{line.output}</span>
               )}
-            </div>
+            </motion.div>
           ))}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.9 + lines.length * 0.18, duration: 0.3 }}
+            className="flex gap-2 items-baseline"
+            aria-hidden="true"
+          >
+            <span className="text-accent font-medium whitespace-nowrap">~/projects</span>
+            <span className="text-textMuted">$</span>
+            <span className="cursor-blink" />
+          </motion.div>
         </div>
       </div>
 

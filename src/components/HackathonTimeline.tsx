@@ -19,6 +19,10 @@ export function HackathonTimeline() {
           transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
+          <span className="kicker">
+            <span className="kicker-dot" aria-hidden="true" />
+            04 // Journey
+          </span>
           <h2 id="hackathons-heading" className="heading-lg mb-4">
             Hackathons & Technical Activities
           </h2>
