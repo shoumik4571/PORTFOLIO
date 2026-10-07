@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
+import { MotionBackground } from './MotionBackground';
+import { Magnetic } from './Magnetic';
 
 export function Hero() {
   const socialLinks = [
@@ -25,10 +27,9 @@ export function Hero() {
       className="relative min-h-screen flex items-center justify-center pt-16 lg:pt-20 overflow-hidden"
       aria-labelledby="hero-title"
     >
-      <div className="absolute inset-0 grid-pattern grid-fade opacity-60" aria-hidden="true" />
-
-      <div className="aurora-blob aurora-a left-[-10%] top-[-10%] w-[480px] h-[480px] bg-accent/10" aria-hidden="true" />
-      <div className="aurora-blob aurora-b right-[-12%] bottom-[-15%] w-[560px] h-[560px] bg-accent/[0.07]" aria-hidden="true" />
+      <MotionBackground />
+      <div className="absolute inset-0 hero-vignette" aria-hidden="true" />
+      <div className="absolute inset-0 grid-pattern grid-fade opacity-40" aria-hidden="true" />
       <div className="absolute inset-x-0 top-0 hairline-top opacity-70" aria-hidden="true" />
 
       <div className="container-custom relative z-10">
@@ -94,22 +95,26 @@ export function Hero() {
               transition={{ delay: 0.6, duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
               className="flex flex-wrap gap-4"
             >
-              <a
-                href="#projects"
-                className="btn-primary group"
-                aria-label="View my projects"
-              >
-                View Projects
-                <ExternalLink className="w-4 h-4 transition-transform duration-fast group-hover:translate-x-1" aria-hidden="true" />
-              </a>
-              <a
-                href="/resume/Shoumik_Aggarwal_Resume.docx"
-                download
-                className="btn-secondary"
-                aria-label="Download my resume"
-              >
-                Download Resume
-              </a>
+              <Magnetic>
+                <a
+                  href="#projects"
+                  className="btn-primary group"
+                  aria-label="View my projects"
+                >
+                  View Projects
+                  <ExternalLink className="w-4 h-4 transition-transform duration-fast group-hover:translate-x-1" aria-hidden="true" />
+                </a>
+              </Magnetic>
+              <Magnetic>
+                <a
+                  href="/resume/Shoumik_Aggarwal_Resume.docx"
+                  download
+                  className="btn-secondary"
+                  aria-label="Download my resume"
+                >
+                  Download Resume
+                </a>
+              </Magnetic>
             </motion.div>
 
             <motion.div

@@ -11,6 +11,7 @@ import { Education } from '@/components/Education';
 import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
 import { ScrollProgress } from '@/components/ScrollProgress';
+import { TechTicker } from '@/components/TechTicker';
 import { experience } from '@/data/experience';
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <Navbar />
       <main id="main-content" className="min-h-screen">
         <Hero />
+        <TechTicker />
         <About />
         <FocusAreas />
         <ProjectGrid />
