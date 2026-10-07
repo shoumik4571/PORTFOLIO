@@ -29,9 +29,18 @@ export function Footer() {
 
   return (
     <footer
-      className="border-t border-border bg-surface/50"
+      className="border-t border-border bg-surface/50 overflow-hidden"
       role="contentinfo"
     >
+      <div className="watermark-mask pt-10" aria-hidden="true">
+        <div className="watermark-track">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <span key={i} className="watermark-text">
+              SHOUMIK AGGARWAL
+            </span>
+          ))}
+        </div>
+      </div>
       <div className="container-custom py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           <div className="space-y-6">

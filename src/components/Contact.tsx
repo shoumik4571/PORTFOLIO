@@ -45,10 +45,11 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="section bg-background"
+      className="section bg-background relative overflow-hidden"
       aria-labelledby="contact-heading"
     >
-      <div className="container-custom">
+      <div className="aurora-blob aurora-a left-[8%] top-[-12%] w-[85%] h-[420px] bg-accent/[0.07]" aria-hidden="true" />
+      <div className="container-custom relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

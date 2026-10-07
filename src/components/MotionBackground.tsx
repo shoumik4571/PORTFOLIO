@@ -105,7 +105,7 @@ export function MotionBackground({ className = '' }: { className?: string }) {
       for (const p of particles) {
         const nearMouse =
           Math.abs(p.x - mouse.x) < MOUSE_RADIUS && Math.abs(p.y - mouse.y) < MOUSE_RADIUS;
-        const boost = nearMouse ? 0.35 : 0;
+        const boost = nearMouse ? 0.18 : 0;
         const color =
           p.tint > 0.82
             ? `rgba(250, 250, 250, ${(p.a * 0.7 + boost).toFixed(3)})`
@@ -117,11 +117,11 @@ export function MotionBackground({ className = '' }: { className?: string }) {
       }
 
       if (mouse.x > 0 && mouse.y > 0) {
-        const glow = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 180);
-        glow.addColorStop(0, 'rgba(0, 212, 170, 0.10)');
+        const glow = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 150);
+        glow.addColorStop(0, 'rgba(0, 212, 170, 0.045)');
         glow.addColorStop(1, 'rgba(0, 212, 170, 0)');
         ctx.fillStyle = glow;
-        ctx.fillRect(mouse.x - 180, mouse.y - 180, 360, 360);
+        ctx.fillRect(mouse.x - 150, mouse.y - 150, 300, 300);
       }
     };
 

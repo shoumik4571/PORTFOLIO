@@ -470,7 +470,7 @@
     align-items: center;
     width: max-content;
     padding: 1rem 0;
-    animation: tickerScroll 36s linear infinite;
+    animation: tickerScroll 30s linear infinite;
   }
 
   .ticker:hover .ticker-track {
@@ -545,6 +545,72 @@
     z-index: 5;
   }
 
+  @property --beam-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  .beam-border {
+    position: relative;
+  }
+
+  .beam-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: conic-gradient(
+      from var(--beam-angle),
+      transparent 0%,
+      color-mix(in srgb, var(--color-accent) 65%, transparent) 10%,
+      transparent 24%,
+      transparent 52%,
+      color-mix(in srgb, var(--color-iris) 65%, transparent) 64%,
+      transparent 78%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    animation: beamSpin 7s linear infinite;
+    pointer-events: none;
+    z-index: 6;
+  }
+
+  @keyframes beamSpin {
+    to { --beam-angle: 360deg; }
+  }
+
+  .watermark-mask {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  }
+
+  .watermark-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: watermarkScroll 42s linear infinite;
+  }
+
+  @keyframes watermarkScroll {
+    to { transform: translateX(-50%); }
+  }
+
+  .watermark-text {
+    white-space: nowrap;
+    padding-right: 3rem;
+    font-size: clamp(3rem, 9vw, 6.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: transparent;
+    -webkit-text-stroke: 1px color-mix(in srgb, var(--color-accent) 22%, transparent);
+  }
+
   .tilt:hover .tilt-glare {
     opacity: 1;
   }
@@ -553,17 +619,17 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 520px;
-    height: 520px;
-    margin-left: -260px;
-    margin-top: -260px;
+    width: 420px;
+    height: 420px;
+    margin-left: -210px;
+    margin-top: -210px;
     border-radius: 9999px;
     pointer-events: none;
     z-index: 45;
     background: radial-gradient(
       circle,
-      rgba(0, 212, 170, 0.08),
-      rgba(139, 124, 246, 0.05) 42%,
+      rgba(0, 212, 170, 0.032),
+      rgba(139, 124, 246, 0.02) 42%,
       transparent 70%
     );
     mix-blend-mode: screen;
@@ -619,10 +685,12 @@
 
   @media (prefers-reduced-motion: reduce) {
     .ticker-track,
+    .watermark-track,
     .aurora-a,
     .aurora-b,
     .cursor-blink,
-    .kicker-dot {
+    .kicker-dot,
+    .beam-border::before {
       animation: none !important;
     }
   }

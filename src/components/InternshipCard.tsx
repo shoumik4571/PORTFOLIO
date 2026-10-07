@@ -42,7 +42,7 @@ export function InternshipCard({ experience }: InternshipCardProps) {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
-            className="card-elevated relative overflow-hidden"
+            className="card-elevated relative overflow-hidden beam-border"
           >
             <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-accent to-accent-hover" aria-hidden="true" />
 

@@ -22,7 +22,7 @@ export function ProjectCard({ project, onClick, style }: ProjectCardProps) {
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
       className={cn(
-        'card group relative overflow-hidden shine h-full',
+        'card group relative overflow-hidden shine beam-border h-full',
         isInteractive && 'cursor-pointer'
       )}
       style={style}

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Sparkles, Braces, Cpu } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { MotionBackground } from './MotionBackground';
 import { Magnetic } from './Magnetic';
@@ -152,6 +152,26 @@ export function Hero() {
             <div className="absolute inset-0 aurora-blob aurora-b left-[10%] top-[10%] w-[80%] h-[80%] bg-accent/10" aria-hidden="true" />
             <div className="relative aspect-square max-w-md mx-auto">
               <TerminalVisual />
+              {[
+                { label: 'Gemini AI', icon: Sparkles, pos: 'right-[-9%] top-[4%]', delay: 1.3, duration: 5 },
+                { label: 'Next.js', icon: Braces, pos: 'left-[-11%] top-[36%]', delay: 2.1, duration: 6 },
+                { label: 'Python', icon: Cpu, pos: 'right-[-5%] bottom-[6%]', delay: 2.9, duration: 5.5 },
+              ].map((chip) => (
+                <motion.div
+                  key={chip.label}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1, y: [0, -10, 0] }}
+                  transition={{
+                    opacity: { delay: chip.delay, duration: 0.5 },
+                    scale: { delay: chip.delay, duration: 0.5 },
+                    y: { delay: chip.delay, duration: chip.duration, repeat: Infinity, ease: 'easeInOut' },
+                  }}
+                  className={`absolute ${chip.pos} z-10 flex items-center gap-2 px-3 py-2 rounded-full bg-surface/80 backdrop-blur-md border border-accent/25 font-mono text-caption text-textSecondary shadow-xl`}
+                >
+                  <chip.icon className="w-3.5 h-3.5 text-accent" aria-hidden="true" />
+                  {chip.label}
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
