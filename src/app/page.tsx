@@ -12,12 +12,25 @@ import { Contact } from '@/components/Contact';
 import { Footer } from '@/components/Footer';
 import { ScrollProgress } from '@/components/ScrollProgress';
 import { TechTicker } from '@/components/TechTicker';
+import { CursorGlow } from '@/components/CursorGlow';
 import { experience } from '@/data/experience';
+
+const focusTickerItems = [
+  'Agentic AI',
+  'Generative AI',
+  'Cybersecurity',
+  'Software Development',
+  'Cloud Computing',
+  'Python',
+  'Machine Learning',
+  'Prompt Engineering',
+];
 
 export default function Home() {
   return (
     <>
       <ScrollProgress />
+      <CursorGlow />
       <div className="noise-overlay" aria-hidden="true" />
       <Navbar />
       <main id="main-content" className="min-h-screen">
@@ -31,6 +44,7 @@ export default function Home() {
         <CertificationGrid />
         <Skills />
         <Education />
+        <TechTicker items={focusTickerItems} reverse />
         <Contact />
       </main>
       <Footer />

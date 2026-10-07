@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { ProjectCard } from './ProjectCard';
+import { Tilt } from './Tilt';
 import { projects, projectFilters } from '@/data/projects';
 import type { Project } from '@/data/projects';
 
@@ -84,12 +85,13 @@ export function ProjectGrid() {
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProjects.map((project, index) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  onClick={() => handleProjectClick(project)}
-                  style={{ transitionDelay: `${index * 50}ms` } as React.CSSProperties}
-                />
+                <Tilt key={project.id} className="h-full">
+                  <ProjectCard
+                    project={project}
+                    onClick={() => handleProjectClick(project)}
+                    style={{ transitionDelay: `${index * 50}ms` } as React.CSSProperties}
+                  />
+                </Tilt>
               ))}
             </div>
 

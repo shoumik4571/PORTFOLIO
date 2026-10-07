@@ -16,7 +16,7 @@ export function CertificationCard({ certification, index }: CertificationCardPro
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.5, delay: index * 0.08, ease: [0.19, 1, 0.22, 1] }}
-      className="card group relative overflow-hidden"
+      className="card group relative overflow-hidden h-full"
       tabIndex={0}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-normal" aria-hidden="true" />
@@ -32,7 +32,7 @@ export function CertificationCard({ certification, index }: CertificationCardPro
               {certification.name}
             </h3>
             {certification.status === 'in-progress' ? (
-              <span className="tag-accent shrink-0 bg-amber-500/10 text-amber-400 border-amber-500/30">
+              <span className="tag-accent shrink-0 bg-amber-500/10 text-amber-400 border-amber-500/30 animate-pulse">
                 In Progress
               </span>
             ) : (

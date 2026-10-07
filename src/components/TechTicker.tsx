@@ -1,6 +1,6 @@
 'use client';
 
-const techs = [
+const defaultTechs = [
   'Next.js',
   'TypeScript',
   'Python',
@@ -15,14 +15,27 @@ const techs = [
   'Git & GitHub',
 ];
 
-export function TechTicker() {
-  const row = [...techs, ...techs];
+interface TechTickerProps {
+  items?: string[];
+  reverse?: boolean;
+}
+
+export function TechTicker({ items = defaultTechs, reverse = false }: TechTickerProps) {
+  const row = [...items, ...items];
 
   return (
     <div className="ticker" role="list" aria-label="Technologies I work with">
-      <div className="ticker-track">
+      <div
+        className="ticker-track"
+        style={reverse ? { animationDirection: 'reverse' } : undefined}
+      >
         {row.map((tech, index) => (
-          <span key={`${tech}-${index}`} className="ticker-item" role="listitem" aria-hidden={index >= techs.length}>
+          <span
+            key={`${tech}-${index}`}
+            className="ticker-item"
+            role="listitem"
+            aria-hidden={index >= items.length}
+          >
             <span className="ticker-sep" aria-hidden="true">
               {'</>'}
             </span>

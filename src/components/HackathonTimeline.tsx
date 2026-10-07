@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { HackathonCard } from './HackathonCard';
+import { Tilt } from './Tilt';
 import { hackathons } from '@/data/hackathons';
 
 export function HackathonTimeline() {
@@ -33,7 +34,9 @@ export function HackathonTimeline() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {hackathons.map((hackathon, index) => (
-            <HackathonCard key={hackathon.id} hackathon={hackathon} index={index} />
+            <Tilt key={hackathon.id} className="h-full">
+              <HackathonCard hackathon={hackathon} index={index} />
+            </Tilt>
           ))}
         </div>
 

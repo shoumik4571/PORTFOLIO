@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { Countdown } from './Countdown';
 import type { Experience } from '@/data/experience';
 
 interface InternshipCardProps {
@@ -106,6 +107,10 @@ export function InternshipCard({ experience }: InternshipCardProps) {
                   <p className="caption text-textMuted">Supervisor</p>
                   <p className="body text-textPrimary">{experience.supervisor}</p>
                 </div>
+              </div>
+
+              <div className="pt-4 border-t border-border">
+                <Countdown />
               </div>
 
               <div className="pt-4 border-t border-border">

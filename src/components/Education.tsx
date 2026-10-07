@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Award, GraduationCap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { education } from '@/data/experience';
+import { Tilt } from './Tilt';
 
 function EducationItem({ edu, index }: { edu: typeof education[0]; index: number }) {
   const isDegree = 'degree' in edu && 'board' in edu;
@@ -15,7 +16,7 @@ function EducationItem({ edu, index }: { edu: typeof education[0]; index: number
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.5, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] }}
-      className="card group relative overflow-hidden"
+      className="card group relative overflow-hidden h-full"
       tabIndex={0}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-normal" aria-hidden="true" />
@@ -92,7 +93,9 @@ export function Education() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {education.map((edu, index) => (
-            <EducationItem key={edu.id} edu={edu} index={index} />
+            <Tilt key={edu.id} className="h-full">
+              <EducationItem edu={edu} index={index} />
+            </Tilt>
           ))}
         </div>
       </div>

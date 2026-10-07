@@ -15,9 +15,12 @@ export function HackathonCard({ hackathon, index }: HackathonCardProps) {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] }}
-      className="card relative"
+      className="card relative h-full shine"
       tabIndex={0}
     >
+      <span className="absolute top-4 right-4 font-mono text-caption text-textMuted/70" aria-hidden="true">
+        0{index + 1}
+      </span>
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-accent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-normal" aria-hidden="true" />
 
       <div className="relative z-10 space-y-4">

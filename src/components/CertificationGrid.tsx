@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { CertificationCard } from './CertificationCard';
+import { Tilt } from './Tilt';
 import { certifications } from '@/data/certifications';
 
 export function CertificationGrid() {
@@ -39,7 +40,9 @@ export function CertificationGrid() {
             <h3 className="caption text-textMuted mb-6 text-center">Completed</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {completed.map((certification, index) => (
-                <CertificationCard key={certification.id} certification={certification} index={index} />
+                <Tilt key={certification.id} className="h-full">
+                  <CertificationCard certification={certification} index={index} />
+                </Tilt>
               ))}
             </div>
           </div>
@@ -50,7 +53,9 @@ export function CertificationGrid() {
             <h3 className="caption text-textMuted mb-6 text-center">Currently Pursuing</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {inProgress.map((certification, index) => (
-                <CertificationCard key={certification.id} certification={certification} index={index} />
+                <Tilt key={certification.id} className="h-full">
+                  <CertificationCard certification={certification} index={index} />
+                </Tilt>
               ))}
             </div>
           </div>

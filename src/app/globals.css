@@ -19,6 +19,7 @@
   --color-accentHover: #00e8bb;
   --color-accent-muted: #00d4aa20;
   --color-accentMuted: #00d4aa20;
+  --color-iris: #8b7cf6;
 
   --font-sans: Inter, system-ui, -apple-system, sans-serif;
   --font-mono: JetBrains Mono, Fira Code, monospace;
@@ -496,6 +497,124 @@
   .ticker-sep {
     color: var(--color-accent);
     font-size: 0.7rem;
+  }
+
+  .gradient-duo {
+    background: linear-gradient(100deg, var(--color-accent), var(--color-iris));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-glow-soft {
+    text-shadow: 0 0 44px rgba(250, 250, 250, 0.16);
+  }
+
+  .shine {
+    position: relative;
+  }
+
+  .shine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, 0.09) 50%, transparent 58%);
+    transform: translateX(-130%);
+    transition: transform 0.9s ease;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .shine:hover::after {
+    transform: translateX(130%);
+  }
+
+  .tilt-glare {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    background: radial-gradient(
+      420px circle at var(--gx, 50%) var(--gy, 50%),
+      rgba(255, 255, 255, 0.1),
+      transparent 62%
+    );
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .tilt:hover .tilt-glare {
+    opacity: 1;
+  }
+
+  .cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 520px;
+    height: 520px;
+    margin-left: -260px;
+    margin-top: -260px;
+    border-radius: 9999px;
+    pointer-events: none;
+    z-index: 45;
+    background: radial-gradient(
+      circle,
+      rgba(0, 212, 170, 0.08),
+      rgba(139, 124, 246, 0.05) 42%,
+      transparent 70%
+    );
+    mix-blend-mode: screen;
+  }
+
+  .countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .countdown-cell {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 0.9rem 0.5rem;
+    text-align: center;
+  }
+
+  .countdown-cell::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-iris));
+  }
+
+  .countdown-num {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    background: linear-gradient(120deg, var(--color-accent), var(--color-iris));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .countdown-label {
+    display: block;
+    margin-top: 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
   }
 
   @media (prefers-reduced-motion: reduce) {

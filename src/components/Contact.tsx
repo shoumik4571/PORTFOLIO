@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Mail, FileText, ExternalLink } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
+import { Tilt } from './Tilt';
 import { cn } from '@/lib/utils';
 
 const contactLinks = [
@@ -75,8 +76,8 @@ export function Contact() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto"
         >
           {contactLinks.map((contact, index) => (
+            <Tilt key={contact.id} className="h-full">
             <motion.a
-              key={contact.id}
               href={contact.href}
               target={contact.external ? '_blank' : undefined}
               rel={contact.external ? 'noopener noreferrer' : undefined}
@@ -84,7 +85,7 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08, ease: [0.19, 1, 0.22, 1] }}
-              className="card group flex flex-col items-center text-center p-8"
+              className="card group flex flex-col items-center text-center p-8 h-full shine overflow-hidden"
               aria-label={`${contact.label} - ${contact.description}`}
             >
               <div className={cn(
@@ -110,6 +111,7 @@ export function Contact() {
                 <ExternalLink className="w-3 h-3 transition-transform duration-fast group-hover/connect:translate-x-1" aria-hidden="true" />
               </span>
             </motion.a>
+            </Tilt>
           ))}
         </motion.div>
 

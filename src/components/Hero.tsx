@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { MotionBackground } from './MotionBackground';
@@ -22,6 +22,10 @@ export function Hero() {
     },
   ];
 
+  const { scrollY } = useScroll();
+  const contentY = useTransform(scrollY, [0, 700], [0, 120]);
+  const contentOpacity = useTransform(scrollY, [0, 600], [1, 0]);
+
   return (
     <section
       className="relative min-h-screen flex items-center justify-center pt-16 lg:pt-20 overflow-hidden"
@@ -32,7 +36,7 @@ export function Hero() {
       <div className="absolute inset-0 grid-pattern grid-fade opacity-40" aria-hidden="true" />
       <div className="absolute inset-x-0 top-0 hairline-top opacity-70" aria-hidden="true" />
 
-      <div className="container-custom relative z-10">
+      <motion.div style={{ y: contentY, opacity: contentOpacity }} className="container-custom relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -56,7 +60,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
-              className="heading-xl gradient-text"
+              className="heading-xl gradient-text text-glow-soft"
             >
               SHOUMIK AGGARWAL
             </motion.h1>
@@ -65,7 +69,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
-              className="heading-md font-normal gradient-accent text-glow-accent"
+              className="heading-md font-normal gradient-duo text-glow-accent"
             >
               AI & SOFTWARE DEVELOPER
             </motion.p>
@@ -151,7 +155,7 @@ export function Hero() {
             </div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}
