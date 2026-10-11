@@ -45,5 +45,7 @@ export function useFinePointer(): boolean {
 
 /** Motion effects (tilt, magnetic, glow) only make sense with fine pointer + motion allowed. */
 export function useMotionEffectsEnabled(): boolean {
-  return useFinePointer() && !usePrefersReducedMotion();
+  const finePointer = useFinePointer();
+  const reducedMotion = usePrefersReducedMotion();
+  return finePointer && !reducedMotion;
 }

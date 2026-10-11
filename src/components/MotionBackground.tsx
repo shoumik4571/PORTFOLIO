@@ -137,7 +137,7 @@ export function MotionBackground({ className = '' }: { className?: string }) {
       raf = requestAnimationFrame(loop);
     };
 
-    const kick = (t: number) => {
+    const kick = () => {
       if (running || reduced) return;
       running = true;
       raf = requestAnimationFrame(loop);
@@ -148,7 +148,7 @@ export function MotionBackground({ className = '' }: { className?: string }) {
         drawFrame(0);
         return;
       }
-      kick(0);
+      kick();
     };
 
     const onMouseMove = (e: MouseEvent) => {
@@ -168,13 +168,13 @@ export function MotionBackground({ className = '' }: { className?: string }) {
     const observer = new IntersectionObserver(
       (entries) => {
         visible = entries[0]?.isIntersecting ?? true;
-        if (visible && !document.hidden) kick(performance.now());
+        if (visible && !document.hidden) kick();
       },
       { threshold: 0 }
     );
 
     const onVisibilityChange = () => {
-      if (!document.hidden && visible) kick(performance.now());
+      if (!document.hidden && visible) kick();
     };
 
     resize();
