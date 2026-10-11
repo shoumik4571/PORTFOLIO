@@ -12,7 +12,7 @@ export function CertificationGrid() {
   return (
     <section
       id="certifications"
-      className="section bg-surface/50"
+      className="section bg-transparent"
       aria-labelledby="certifications-heading"
     >
       <div className="container-custom">

@@ -35,7 +35,7 @@ export function FocusAreas() {
   return (
     <section
       id="focus"
-      className="section bg-surface/50"
+      className="section bg-transparent"
       aria-labelledby="focus-heading"
     >
       <div className="container-custom">

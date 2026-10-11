@@ -13,6 +13,7 @@ import { Footer } from '@/components/Footer';
 import { ScrollProgress } from '@/components/ScrollProgress';
 import { TechTicker } from '@/components/TechTicker';
 import { CursorGlow } from '@/components/CursorGlow';
+import { DeepSpace } from '@/components/DeepSpace';
 import { experience } from '@/data/experience';
 
 const focusTickerItems = [
@@ -31,9 +32,11 @@ export default function Home() {
     <>
       <ScrollProgress />
       <CursorGlow />
+      <DeepSpace />
+      <div className="space-veil" aria-hidden="true" />
       <div className="noise-overlay" aria-hidden="true" />
       <Navbar />
-      <main id="main-content" className="min-h-screen">
+      <main id="main-content" className="min-h-screen relative z-10">
         <Hero />
         <TechTicker />
         <About />

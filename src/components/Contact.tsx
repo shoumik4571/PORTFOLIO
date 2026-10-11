@@ -46,7 +46,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="section bg-background relative overflow-hidden"
+      className="section bg-transparent relative overflow-hidden"
       aria-labelledby="contact-heading"
     >
       <div className="aurora-blob aurora-a left-[8%] top-[-12%] w-[85%] h-[420px] bg-accent/[0.07]" aria-hidden="true" />

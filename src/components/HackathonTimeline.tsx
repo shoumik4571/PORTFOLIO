@@ -9,7 +9,7 @@ export function HackathonTimeline() {
   return (
     <section
       id="hackathons"
-      className="section bg-surface/50"
+      className="section bg-transparent"
       aria-labelledby="hackathons-heading"
     >
       <div className="container-custom">

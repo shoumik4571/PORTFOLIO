@@ -29,7 +29,7 @@ export function Footer() {
 
   return (
     <footer
-      className="border-t border-border bg-surface/50 overflow-hidden"
+      className="border-t border-border bg-transparent overflow-hidden relative z-10"
       role="contentinfo"
     >
       <div className="watermark-mask pt-10" aria-hidden="true">

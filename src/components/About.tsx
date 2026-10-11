@@ -6,7 +6,7 @@ export function About() {
   return (
     <section
       id="about"
-      className="section bg-background"
+      className="section bg-transparent"
       aria-labelledby="about-heading"
     >
       <div className="container-custom">

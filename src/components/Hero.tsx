@@ -3,7 +3,6 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { ExternalLink, Sparkles, Braces, Cpu } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
-import { MotionBackground } from './MotionBackground';
 import { Magnetic } from './Magnetic';
 import { Tilt } from './Tilt';
 import { TextReveal } from './skiper/TextReveal';
@@ -39,7 +38,6 @@ export function Hero() {
       className="relative min-h-screen flex items-center justify-center pt-16 lg:pt-20 overflow-hidden"
       aria-labelledby="hero-title"
     >
-      <MotionBackground />
       <div className="absolute inset-0 hero-vignette" aria-hidden="true" />
       <div className="absolute inset-0 grid-pattern grid-fade opacity-40" aria-hidden="true" />
       <div className="absolute inset-x-0 top-0 hairline-top opacity-70" aria-hidden="true" />

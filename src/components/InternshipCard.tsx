@@ -13,7 +13,7 @@ export function InternshipCard({ experience }: InternshipCardProps) {
   return (
     <section
       id="internship"
-      className="section bg-background"
+      className="section bg-transparent"
       aria-labelledby="internship-heading"
     >
       <div className="container-custom">

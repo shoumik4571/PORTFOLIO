@@ -9,7 +9,7 @@ export function Skills() {
   return (
     <section
       id="skills"
-      className="section bg-background"
+      className="section bg-transparent"
       aria-labelledby="skills-heading"
     >
       <div className="container-custom">

@@ -68,7 +68,7 @@ export function Education() {
   return (
     <section
       id="education"
-      className="section bg-surface/50"
+      className="section bg-transparent"
       aria-labelledby="education-heading"
     >
       <div className="container-custom">

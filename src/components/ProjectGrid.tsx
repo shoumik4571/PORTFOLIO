@@ -25,7 +25,7 @@ export function ProjectGrid() {
   return (
     <section
       id="projects"
-      className="section bg-background"
+      className="section bg-transparent"
       aria-labelledby="projects-heading"
     >
       <div className="container-custom">
