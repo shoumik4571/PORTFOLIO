@@ -179,8 +179,17 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         </div>
 
         <div className="card mb-6">
-          <div className="aspect-video bg-surface-elevated rounded-lg flex items-center justify-center border border-border">
-            <span className="text-body text-textMuted text-center px-4">{project.imagePlaceholder}</span>
+          <div className="aspect-video bg-surface-elevated rounded-lg flex items-center justify-center border border-border overflow-hidden">
+            {project.image ? (
+              <img
+                src={project.image}
+                alt={`${project.title} preview`}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <span className="text-body text-textMuted text-center px-4">{project.imagePlaceholder}</span>
+            )}
           </div>
         </div>
 

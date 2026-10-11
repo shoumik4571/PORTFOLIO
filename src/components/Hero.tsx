@@ -7,6 +7,7 @@ import { MotionBackground } from './MotionBackground';
 import { Magnetic } from './Magnetic';
 import { Tilt } from './Tilt';
 import { TextReveal } from './skiper/TextReveal';
+import { MouseParallax } from './skiper/MouseParallax';
 
 export function Hero() {
   const socialLinks = [
@@ -43,8 +44,9 @@ export function Hero() {
       <div className="absolute inset-0 grid-pattern grid-fade opacity-40" aria-hidden="true" />
       <div className="absolute inset-x-0 top-0 hairline-top opacity-70" aria-hidden="true" />
 
-      <motion.div style={{ y: contentY, opacity: contentOpacity }} className="container-custom relative z-10">
+      <motion.div style={{ y: contentY, opacity: contentOpacity }} className="container-custom relative z-10 [perspective:1600px]">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <MouseParallax depth={4}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -146,7 +148,9 @@ export function Hero() {
               ))}
             </motion.div>
           </motion.div>
+          </MouseParallax>
 
+          <MouseParallax depth={8} className="hidden lg:block">
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -188,6 +192,7 @@ export function Hero() {
               ))}
             </div>
           </motion.div>
+          </MouseParallax>
         </div>
       </motion.div>
 

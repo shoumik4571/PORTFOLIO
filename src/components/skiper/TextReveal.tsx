@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { EASE } from '@/lib/motion';
 
 interface TextRevealProps {
@@ -19,8 +19,8 @@ const MOTION_TAGS = {
 } as const;
 
 /**
- * Skiper-style word-stagger blur reveal.
- * Renders the final readable state immediately when reduced motion is on.
+ * Skiper-style word-stagger rise reveal (opacity + vertical + scale only —
+ * no blur filters, so gradient-clipped text stays razor sharp).
  */
 export function TextReveal({
   text,
@@ -29,22 +29,15 @@ export function TextReveal({
   stagger = 0.06,
   as = 'span',
 }: TextRevealProps) {
-  const reduceMotion = useReducedMotion();
-  const words = text.split(' ');
-
-  if (reduceMotion) {
-    const Tag = as as 'span';
-    return <Tag className={className}>{text}</Tag>;
-  }
-
   const Tag = MOTION_TAGS[as];
+  const words = text.split(' ');
 
   return (
     <Tag
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-80px' }}
+      viewport={{ once: true, margin: '-40px' }}
       variants={{
         hidden: {},
         visible: { transition: { staggerChildren: stagger, delayChildren: delay } },
@@ -54,14 +47,14 @@ export function TextReveal({
       {words.map((word, i) => (
         <motion.span
           key={`${word}-${i}`}
-          className="inline-block will-change-transform"
+          className="inline-block"
           variants={{
-            hidden: { opacity: 0, y: 14, filter: 'blur(6px)' },
+            hidden: { opacity: 0, y: 22, scale: 0.96 },
             visible: {
               opacity: 1,
               y: 0,
-              filter: 'blur(0px)',
-              transition: { duration: 0.55, ease: EASE },
+              scale: 1,
+              transition: { duration: 0.6, ease: EASE },
             },
           }}
           aria-hidden="true"

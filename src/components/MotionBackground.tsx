@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 // Perspective projection constants
 const DEPTH = 900;
 const FOV = 320;
-const STAR_BASE_R = 1.6;
+const STAR_BASE_R = 2.1;
 
 interface Star {
   x: number;
@@ -47,7 +47,7 @@ export function MotionBackground({ className = '' }: { className?: string }) {
     let lastScrollY = window.scrollY;
 
     const seed = () => {
-      const count = Math.max(120, Math.min(260, Math.floor((w * h) / 9000)));
+      const count = Math.max(150, Math.min(320, Math.floor((w * h) / 7000)));
       const spreadX = w * 0.75;
       const spreadY = h * 0.75;
       stars = Array.from({ length: count }, () => ({
@@ -102,7 +102,7 @@ export function MotionBackground({ className = '' }: { className?: string }) {
         const alpha = Math.min(1, scale * 1.15) * twinkle;
         const radius = Math.max(0.3, s.r * scale * (1 + warp * 0.9));
 
-        ctx.globalAlpha = alpha * 0.9;
+        ctx.globalAlpha = Math.min(1, alpha * 1.1);
         ctx.fillStyle =
           s.tint > 0.86
             ? '#fafafa'
