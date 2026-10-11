@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
+import { NumberTicker } from './magic/NumberTicker';
 
 const OrbitGem = dynamic(() => import('./three/OrbitGem').then((m) => m.OrbitGem), {
   ssr: false,
@@ -46,6 +47,20 @@ export function About() {
               <p className="body-lg">
                 I actively participate in hackathons and technical challenges while building projects to develop practical technical skills.
               </p>
+              <dl className="mt-8 flex items-center gap-8 font-mono">
+                {[
+                  { value: 3, label: 'Projects' },
+                  { value: 3, label: 'Hackathons' },
+                  { value: 26, label: 'Technologies' },
+                ].map((stat) => (
+                  <div key={stat.label}>
+                    <dd className="text-3xl font-bold text-accent tabular-nums">
+                      <NumberTicker value={stat.value} />
+                    </dd>
+                    <dt className="text-caption text-textMuted uppercase tracking-widest">{stat.label}</dt>
+                  </div>
+                ))}
+              </dl>
             </div>
           </div>
           <OrbitGem className="aspect-square w-full max-w-sm mx-auto" />

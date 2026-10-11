@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Tilt } from './Tilt';
 import { AnimatedGroup, AnimatedGroupItem } from './motion-primitives/AnimatedGroup';
+import { SkillIcon } from './SkillIcon';
 import { skillCategories } from '@/data/skills';
 
 export function Skills() {
@@ -71,11 +72,12 @@ export function Skills() {
                       key={skill}
                       preset="scale"
                       className={cn(
-                        'tag group/skill',
+                        'tag group/skill gap-1.5',
                         category.category === 'CURRENTLY LEARNING' && 'border-amber-500/30 text-amber-400 hover:border-amber-500 hover:bg-amber-500/10'
                       )}
                       role="listitem"
                     >
+                      <SkillIcon name={skill} />
                       {skill}
                     </AnimatedGroupItem>
                   ))}
