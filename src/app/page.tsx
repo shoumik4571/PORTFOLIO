@@ -14,6 +14,7 @@ import { ScrollProgress } from '@/components/ScrollProgress';
 import { TechTicker } from '@/components/TechTicker';
 import { CursorGlow } from '@/components/CursorGlow';
 import { DeepSpace } from '@/components/DeepSpace';
+import { VideoBackdrop } from '@/components/VideoBackdrop';
 import { experience } from '@/data/experience';
 
 const focusTickerItems = [
@@ -33,6 +34,7 @@ export default function Home() {
       <ScrollProgress />
       <CursorGlow />
       <DeepSpace />
+      <VideoBackdrop />
       <div className="space-veil" aria-hidden="true" />
       <div className="noise-overlay" aria-hidden="true" />
       <Navbar />
