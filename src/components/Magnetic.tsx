@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { useRef, type ReactNode, type MouseEvent } from 'react';
+import { useMotionEffectsEnabled } from '@/lib/motion';
 
 interface MagneticProps {
   children: ReactNode;
@@ -11,12 +12,14 @@ interface MagneticProps {
 
 export function Magnetic({ children, className = '', strength = 0.3 }: MagneticProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const effectsEnabled = useMotionEffectsEnabled();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const sx = useSpring(x, { stiffness: 200, damping: 18, mass: 0.4 });
   const sy = useSpring(y, { stiffness: 200, damping: 18, mass: 0.4 });
 
   const handleMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (!effectsEnabled) return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { ProjectCard } from './ProjectCard';
@@ -108,18 +108,25 @@ export function ProjectGrid() {
         </AnimatePresence>
       </div>
 
-      {expandedProject && (
-        <ProjectModal
-          project={projects.find((p) => p.id === expandedProject)!}
-          onClose={() => setExpandedProject(null)}
-        />
-      )}
+      <AnimatePresence>
+        {expandedProject && (
+          <ProjectModal
+            project={projects.find((p) => p.id === expandedProject)!}
+            onClose={() => setExpandedProject(null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }
 
 function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
+  const closeRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
+    // Move focus into the dialog on open and restore it on close.
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    closeRef.current?.focus();
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
     };
@@ -129,6 +136,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = previousOverflow;
+      previouslyFocused?.focus?.();
     };
   }, [onClose]);
 
@@ -158,6 +166,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             </h3>
           </div>
           <button
+            ref={closeRef}
             onClick={onClose}
             className="p-2 rounded-lg text-textMuted hover:text-textPrimary hover:bg-surface transition-colors duration-fast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             aria-label="Close modal"

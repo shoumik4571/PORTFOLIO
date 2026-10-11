@@ -1,10 +1,12 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { ExternalLink, Sparkles, Braces, Cpu } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { MotionBackground } from './MotionBackground';
 import { Magnetic } from './Magnetic';
+import { Tilt } from './Tilt';
+import { TextReveal } from './skiper/TextReveal';
 
 export function Hero() {
   const socialLinks = [
@@ -22,9 +24,14 @@ export function Hero() {
     },
   ];
 
+  const reduceMotion = useReducedMotion();
   const { scrollY } = useScroll();
-  const contentY = useTransform(scrollY, [0, 700], [0, 120]);
-  const contentOpacity = useTransform(scrollY, [0, 600], [1, 0]);
+  // Parallax is decorative: freeze it when reduced motion is requested so
+  // the hero renders in its final readable state (ui-ux-pro-max: ux).
+  const parallaxY = useTransform(scrollY, [0, 700], [0, 120]);
+  const parallaxOpacity = useTransform(scrollY, [0, 600], [1, 0]);
+  const contentY = reduceMotion ? 0 : parallaxY;
+  const contentOpacity = reduceMotion ? 1 : parallaxOpacity;
 
   return (
     <section
@@ -55,15 +62,12 @@ export function Hero() {
               </span>
             </motion.div>
 
-            <motion.h1
+            <h1
               id="hero-title"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
               className="heading-xl gradient-text text-glow-soft"
             >
-              SHOUMIK AGGARWAL
-            </motion.h1>
+              <TextReveal text="SHOUMIK AGGARWAL" delay={0.3} stagger={0.08} />
+            </h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -151,7 +155,9 @@ export function Hero() {
           >
             <div className="absolute inset-0 aurora-blob aurora-b left-[10%] top-[10%] w-[80%] h-[80%] bg-accent/10" aria-hidden="true" />
             <div className="relative aspect-square max-w-md mx-auto">
-              <TerminalVisual />
+              <Tilt max={9} className="h-full">
+                <TerminalVisual />
+              </Tilt>
               {[
                 { label: 'Gemini AI', icon: Sparkles, pos: 'right-[-9%] top-[4%]', delay: 1.3, duration: 5 },
                 { label: 'Next.js', icon: Braces, pos: 'left-[-11%] top-[36%]', delay: 2.1, duration: 6 },
@@ -159,13 +165,21 @@ export function Hero() {
               ].map((chip) => (
                 <motion.div
                   key={chip.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1, y: [0, -10, 0] }}
-                  transition={{
-                    opacity: { delay: chip.delay, duration: 0.5 },
-                    scale: { delay: chip.delay, duration: 0.5 },
-                    y: { delay: chip.delay, duration: chip.duration, repeat: Infinity, ease: 'easeInOut' },
-                  }}
+                  initial={reduceMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                  animate={
+                    reduceMotion
+                      ? { opacity: 1, scale: 1 }
+                      : { opacity: 1, scale: 1, y: [0, -10, 0] }
+                  }
+                  transition={
+                    reduceMotion
+                      ? { duration: 0 }
+                      : {
+                          opacity: { delay: chip.delay, duration: 0.5 },
+                          scale: { delay: chip.delay, duration: 0.5 },
+                          y: { delay: chip.delay, duration: chip.duration, repeat: Infinity, ease: 'easeInOut' },
+                        }
+                  }
                   className={`absolute ${chip.pos} z-10 flex items-center gap-2 px-3 py-2 rounded-full bg-surface/80 backdrop-blur-md border border-accent/25 font-mono text-caption text-textSecondary shadow-xl`}
                 >
                   <chip.icon className="w-3.5 h-3.5 text-accent" aria-hidden="true" />

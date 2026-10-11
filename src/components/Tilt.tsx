@@ -1,7 +1,8 @@
 'use client';
 
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { useRef, useState, type ReactNode, type MouseEvent } from 'react';
+import { useRef, type ReactNode, type MouseEvent } from 'react';
+import { useMotionEffectsEnabled } from '@/lib/motion';
 
 interface TiltProps {
   children: ReactNode;
@@ -10,12 +11,9 @@ interface TiltProps {
 }
 
 export function Tilt({ children, className = '', max = 7 }: TiltProps) {
-  const [fine] = useState(
-    () =>
-      typeof window !== 'undefined' &&
-      window.matchMedia('(pointer: fine)').matches &&
-      !window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  );
+  // Live value: disables tilt on touch devices or when reduced motion is on,
+  // and re-enables if the user changes their OS settings mid-session.
+  const fine = useMotionEffectsEnabled();
   const innerRef = useRef<HTMLDivElement>(null);
   const px = useMotionValue(0.5);
   const py = useMotionValue(0.5);

@@ -20,7 +20,13 @@ export function Countdown() {
   const [now, setNow] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => setNow(Date.now()), 1000);
+    // Stop ticking once the program window has passed — the static
+    // "concluded" message needs no re-renders.
+    if (Date.now() >= END) return;
+    const t = setInterval(() => {
+      setNow(Date.now());
+      if (Date.now() >= END) clearInterval(t);
+    }, 1000);
     return () => clearInterval(t);
   }, []);
 

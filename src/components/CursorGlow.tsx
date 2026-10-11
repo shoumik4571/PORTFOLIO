@@ -1,15 +1,13 @@
 'use client';
 
 import { motion, useMotionValue, useSpring } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useMotionEffectsEnabled } from '@/lib/motion';
 
 export function CursorGlow() {
-  const [enabled] = useState(
-    () =>
-      typeof window !== 'undefined' &&
-      window.matchMedia('(pointer: fine)').matches &&
-      !window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  );
+  // Live value: unmounts the glow on touch devices or reduced motion,
+  // and reacts if the user changes OS settings mid-session.
+  const enabled = useMotionEffectsEnabled();
   const x = useMotionValue(-600);
   const y = useMotionValue(-600);
   const sx = useSpring(x, { stiffness: 120, damping: 25, mass: 0.6 });

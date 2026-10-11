@@ -2,19 +2,27 @@
 
 import { useEffect, useRef } from 'react';
 
-interface Particle {
+// Perspective projection constants
+const DEPTH = 900;
+const FOV = 320;
+const STAR_BASE_R = 1.6;
+
+interface Star {
   x: number;
   y: number;
-  vx: number;
-  vy: number;
+  z: number;
   r: number;
-  a: number;
   tint: number;
+  tw: number;
 }
 
-const LINK_DIST = 130;
-const MOUSE_RADIUS = 150;
-
+/**
+ * 3D warp-field backdrop (dependency-free perspective projection).
+ *
+ * Stars live in x/y/z world space and are projected with a pinhole camera.
+ * Scroll velocity drives a warp burst, the mouse steers the camera, and
+ * everything freezes to a single static frame under reduced motion.
+ */
 export function MotionBackground({ className = '' }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -26,25 +34,29 @@ export function MotionBackground({ className = '' }: { className?: string }) {
 
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const parent = canvas.parentElement;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const mouse = { x: -9999, y: -9999 };
-    let particles: Particle[] = [];
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    const mouse = { x: 0.5, y: 0.5 };
+    const cam = { x: 0, y: 0 };
+    let stars: Star[] = [];
     let w = 0;
     let h = 0;
     let raf = 0;
     let running = false;
     let visible = true;
+    let warp = 0;
+    let lastScrollY = window.scrollY;
 
     const seed = () => {
-      const count = Math.max(36, Math.min(90, Math.floor((w * h) / 22000)));
-      particles = Array.from({ length: count }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        r: Math.random() * 1.5 + 0.6,
-        a: Math.random() * 0.5 + 0.3,
+      const count = Math.max(120, Math.min(260, Math.floor((w * h) / 9000)));
+      const spreadX = w * 0.75;
+      const spreadY = h * 0.75;
+      stars = Array.from({ length: count }, () => ({
+        x: (Math.random() - 0.5) * 2 * spreadX,
+        y: (Math.random() - 0.5) * 2 * spreadY,
+        z: Math.random() * DEPTH,
+        r: Math.random() * STAR_BASE_R + 0.4,
         tint: Math.random(),
+        tw: Math.random() * Math.PI * 2,
       }));
     };
 
@@ -60,114 +72,117 @@ export function MotionBackground({ className = '' }: { className?: string }) {
       seed();
     };
 
-    const drawFrame = () => {
+    const drawFrame = (t: number) => {
       ctx.clearRect(0, 0, w, h);
+      const cx = w / 2;
+      const cy = h / 2;
 
-      for (const p of particles) {
-        p.x += p.vx;
-        p.y += p.vy;
+      // Ease camera toward the mouse for parallax steering
+      cam.x += ((mouse.x - 0.5) * 140 - cam.x) * 0.04;
+      cam.y += ((mouse.y - 0.5) * 100 - cam.y) * 0.04;
+      warp *= 0.94;
 
-        const mdx = p.x - mouse.x;
-        const mdy = p.y - mouse.y;
-        const md2 = mdx * mdx + mdy * mdy;
-        if (md2 < MOUSE_RADIUS * MOUSE_RADIUS && md2 > 0.01) {
-          const md = Math.sqrt(md2);
-          const force = (1 - md / MOUSE_RADIUS) * 0.9;
-          p.x += (mdx / md) * force;
-          p.y += (mdy / md) * force;
+      const speed = 1.6 + warp * 14;
+
+      for (let i = 0; i < stars.length; i++) {
+        const s = stars[i];
+        s.z -= speed * (0.4 + (1 - s.z / DEPTH) * 0.6);
+        if (s.z <= 1) {
+          s.z = DEPTH;
+          s.x = (Math.random() - 0.5) * 2 * w * 0.75;
+          s.y = (Math.random() - 0.5) * 2 * h * 0.75;
         }
 
-        if (p.x < -20) p.x = w + 20;
-        if (p.x > w + 20) p.x = -20;
-        if (p.y < -20) p.y = h + 20;
-        if (p.y > h + 20) p.y = -20;
-      }
+        const scale = FOV / (FOV + s.z);
+        const sx = cx + (s.x - cam.x * scale) * scale;
+        const sy = cy + (s.y - cam.y * scale) * scale;
+        if (sx < -10 || sx > w + 10 || sy < -10 || sy > h + 10) continue;
 
-      ctx.lineWidth = 1;
-      for (let i = 0; i < particles.length; i++) {
-        const a = particles[i];
-        for (let j = i + 1; j < particles.length; j++) {
-          const b = particles[j];
-          const dx = a.x - b.x;
-          const dy = a.y - b.y;
-          const d = Math.sqrt(dx * dx + dy * dy);
-          if (d < LINK_DIST) {
-            const alpha = (1 - d / LINK_DIST) * 0.28;
-            ctx.strokeStyle = `rgba(0, 212, 170, ${alpha.toFixed(3)})`;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.stroke();
-          }
-        }
-      }
+        const twinkle = 0.72 + 0.28 * Math.sin(t * 0.002 + s.tw);
+        const alpha = Math.min(1, scale * 1.15) * twinkle;
+        const radius = Math.max(0.3, s.r * scale * (1 + warp * 0.9));
 
-      for (const p of particles) {
-        const nearMouse =
-          Math.abs(p.x - mouse.x) < MOUSE_RADIUS && Math.abs(p.y - mouse.y) < MOUSE_RADIUS;
-        const boost = nearMouse ? 0.18 : 0;
-        const color =
-          p.tint > 0.82
-            ? `rgba(250, 250, 250, ${(p.a * 0.7 + boost).toFixed(3)})`
-            : `rgba(0, 212, 170, ${(p.a + boost).toFixed(3)})`;
-        ctx.fillStyle = color;
+        ctx.globalAlpha = alpha * 0.9;
+        ctx.fillStyle =
+          s.tint > 0.86
+            ? '#fafafa'
+            : s.tint > 0.68
+              ? '#8b7cf6'
+              : '#00d4aa';
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.arc(sx, sy, radius, 0, Math.PI * 2);
         ctx.fill();
-      }
 
-      if (mouse.x > 0 && mouse.y > 0) {
-        const glow = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 150);
-        glow.addColorStop(0, 'rgba(0, 212, 170, 0.045)');
-        glow.addColorStop(1, 'rgba(0, 212, 170, 0)');
-        ctx.fillStyle = glow;
-        ctx.fillRect(mouse.x - 150, mouse.y - 150, 300, 300);
+        // Motion streaks while warping
+        if (warp > 0.12) {
+          const streak = warp * 46 * scale;
+          ctx.globalAlpha = alpha * 0.35;
+          ctx.strokeStyle = '#00d4aa';
+          ctx.lineWidth = radius * 0.8;
+          ctx.beginPath();
+          ctx.moveTo(sx, sy);
+          ctx.lineTo(cx + (sx - cx) * (1 + streak / Math.max(1, FOV)), cy + (sy - cy) * (1 + streak / Math.max(1, FOV)));
+          ctx.stroke();
+        }
       }
+      ctx.globalAlpha = 1;
     };
 
-    const loop = () => {
+    const loop = (t: number) => {
       if (!visible || document.hidden) {
-        raf = requestAnimationFrame(loop);
+        running = false;
         return;
       }
-      drawFrame();
+      drawFrame(t);
+      raf = requestAnimationFrame(loop);
+    };
+
+    const kick = (t: number) => {
+      if (running || reduced) return;
+      running = true;
       raf = requestAnimationFrame(loop);
     };
 
     const start = () => {
-      if (running) return;
-      running = true;
       if (reduced) {
-        drawFrame();
-        running = false;
+        drawFrame(0);
         return;
       }
-      raf = requestAnimationFrame(loop);
+      kick(0);
     };
 
     const onMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
+      if (rect.width === 0 || rect.height === 0) return;
+      mouse.x = (e.clientX - rect.left) / rect.width;
+      mouse.y = (e.clientY - rect.top) / rect.height;
     };
 
-    const onMouseLeave = () => {
-      mouse.x = -9999;
-      mouse.y = -9999;
+    const onScroll = () => {
+      const y = window.scrollY;
+      const v = Math.min(6, Math.abs(y - lastScrollY) / 40);
+      warp = Math.min(1, warp + v * 0.25);
+      lastScrollY = y;
     };
 
     const observer = new IntersectionObserver(
       (entries) => {
         visible = entries[0]?.isIntersecting ?? true;
+        if (visible && !document.hidden) kick(performance.now());
       },
       { threshold: 0 }
     );
 
+    const onVisibilityChange = () => {
+      if (!document.hidden && visible) kick(performance.now());
+    };
+
     resize();
     observer.observe(canvas);
     window.addEventListener('resize', resize);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('visibilitychange', onVisibilityChange);
     parent?.addEventListener('mousemove', onMouseMove);
-    parent?.addEventListener('mouseleave', onMouseLeave);
     start();
 
     return () => {
@@ -175,8 +190,9 @@ export function MotionBackground({ className = '' }: { className?: string }) {
       cancelAnimationFrame(raf);
       observer.disconnect();
       window.removeEventListener('resize', resize);
+      window.removeEventListener('scroll', onScroll);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
       parent?.removeEventListener('mousemove', onMouseMove);
-      parent?.removeEventListener('mouseleave', onMouseLeave);
     };
   }, []);
 

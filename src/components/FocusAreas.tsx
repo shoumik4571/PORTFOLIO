@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { SpotlightCard } from './skiper/SpotlightCard';
 
 const focusAreas = [
   {
@@ -65,27 +66,16 @@ export function FocusAreas() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.6, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] }}
-              className="card group"
-              tabIndex={0}
-              role="region"
               aria-label={area.title}
             >
-              <div className="relative overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-normal"
-                  aria-hidden="true"
-                />
+              <SpotlightCard className="h-full">
                 <h3 className="heading-sm mb-3 text-textPrimary group-hover:text-accent transition-colors duration-fast relative z-10">
                   {area.title}
                 </h3>
                 <p className="body text-textSecondary relative z-10">
                   {area.description}
                 </p>
-              </div>
-              <div
-                className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-normal"
-                aria-hidden="true"
-              />
+              </SpotlightCard>
             </motion.article>
           ))}
         </div>
