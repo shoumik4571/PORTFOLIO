@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { ProjectCard } from './ProjectCard';
+import { ProjectArt } from './skiper/ProjectArt';
 import { Tilt } from './Tilt';
 import { projects, projectFilters } from '@/data/projects';
 import type { Project } from '@/data/projects';
@@ -179,17 +180,8 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         </div>
 
         <div className="card mb-6">
-          <div className="aspect-video bg-surface-elevated rounded-lg flex items-center justify-center border border-border overflow-hidden">
-            {project.image ? (
-              <img
-                src={project.image}
-                alt={`${project.title} preview`}
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
-            ) : (
-              <span className="text-body text-textMuted text-center px-4">{project.imagePlaceholder}</span>
-            )}
+          <div className="rounded-lg border border-border overflow-hidden">
+            <ProjectArt id={project.id} label={`${project.title} artwork`} />
           </div>
         </div>
 

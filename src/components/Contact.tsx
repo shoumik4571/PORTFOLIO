@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Mail, FileText, ExternalLink } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { Tilt } from './Tilt';
+import { RocketScene } from './skiper/RocketScene';
 import { cn } from '@/lib/utils';
 
 const contactLinks = [
@@ -57,6 +58,7 @@ export function Contact() {
           transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
+          <RocketScene className="mx-auto -mb-2 h-52" />
           <span className="kicker">
             <span className="kicker-dot" aria-hidden="true" />
             09 // Contact

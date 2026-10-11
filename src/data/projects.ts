@@ -10,7 +10,6 @@ export interface Project {
   githubUrl: string;
   liveDemoUrl?: string;
   imagePlaceholder: string;
-  image?: string;
   filters: string[];
 }
 
@@ -30,7 +29,6 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/shoumik4571/krishisense-ai',
     liveDemoUrl: 'https://krishisense-ai-nine.vercel.app',
     imagePlaceholder: 'Farm intelligence dashboard with crop analysis and 7-day action plan',
-    image: '/images/project-krishisense.jpg',
     filters: ['ai', 'web-development', 'software'],
   },
   {
@@ -47,7 +45,6 @@ export const projects: Project[] = [
       'A rule-based Python agent with strict CSV ingestion, runtime OCR for image-backed amounts, multilingual evidence weighting, a 90-day Decimal forecast, and ranked payment decisions. Runs fully offline with zero LLM or API calls.',
     githubUrl: 'https://github.com/shoumik4571/HackerRank-Orchestrate-Buy-or-Wait',
     imagePlaceholder: 'Financial decision agent processing payment forecasts',
-    image: '/images/project-buyorwait.jpg',
     filters: ['ai', 'python', 'software'],
   },
   {
@@ -63,7 +60,6 @@ export const projects: Project[] = [
       'An offline CLI tool that scores passwords 0–100 on length, character variety, and predictable patterns, generates cryptographically secure passwords with the secrets module, and checks entries against a local common-password list. No third-party dependencies; nothing is stored or transmitted.',
     githubUrl: 'https://github.com/shoumik4571/Password-Security-Toolkit',
     imagePlaceholder: 'Terminal interface showing password strength analysis',
-    image: '/images/project-password.jpg',
     filters: ['python', 'cybersecurity', 'software'],
   },
 ];
