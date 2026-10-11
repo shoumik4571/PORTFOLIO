@@ -1,4 +1,5 @@
 ---
+name: kalzen-landing-page
 description: Build a complete 3D landing page with hero section, copy, and CTAs. Use when the user wants a full web page featuring 3D content.
 ---
 

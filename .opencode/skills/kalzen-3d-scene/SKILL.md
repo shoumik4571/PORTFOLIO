@@ -1,4 +1,5 @@
 ---
+name: kalzen-3d-scene
 description: Compose multiple 3D models into an interactive scene with lighting, camera systems, and interaction. Use when the user wants to display several models together.
 ---
 

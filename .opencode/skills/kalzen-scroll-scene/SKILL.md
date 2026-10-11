@@ -1,4 +1,5 @@
 ---
+name: kalzen-scroll-scene
 description: Create scroll-driven 3D storytelling experiences. Use when the user wants 3D content that responds to page scroll — camera fly-throughs, model reveals, scroll-animated transformations.
 ---
 

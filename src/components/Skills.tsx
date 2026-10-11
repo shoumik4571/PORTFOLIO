@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Tilt } from './Tilt';
+import { AnimatedGroup, AnimatedGroupItem } from './motion-primitives/AnimatedGroup';
 import { skillCategories } from '@/data/skills';
 
 export function Skills() {
@@ -58,14 +59,17 @@ export function Skills() {
                   </span>
                 </div>
 
-                <div className="flex flex-wrap gap-2" role="list" aria-label={`${category.category} skills`}>
-                  {category.skills.map((skill, skillIndex) => (
-                    <motion.span
+                <AnimatedGroup
+                  preset="scale"
+                  stagger={0.035}
+                  className="flex flex-wrap gap-2"
+                  role="list"
+                  aria-label={`${category.category} skills`}
+                >
+                  {category.skills.map((skill) => (
+                    <AnimatedGroupItem
                       key={skill}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.3, delay: categoryIndex * 0.08 + skillIndex * 0.03, ease: [0.34, 1.56, 0.64, 1] }}
+                      preset="scale"
                       className={cn(
                         'tag group/skill',
                         category.category === 'CURRENTLY LEARNING' && 'border-amber-500/30 text-amber-400 hover:border-amber-500 hover:bg-amber-500/10'
@@ -73,12 +77,12 @@ export function Skills() {
                       role="listitem"
                     >
                       {skill}
-                    </motion.span>
+                    </AnimatedGroupItem>
                   ))}
                   {category.category === 'CURRENTLY LEARNING' && (
                     <span className="cursor-blink self-center" aria-hidden="true" />
                   )}
-                </div>
+                </AnimatedGroup>
               </div>
 
               <div

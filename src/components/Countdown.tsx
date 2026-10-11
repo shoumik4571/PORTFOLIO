@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { NumberTicker } from './magic/NumberTicker';
 
 const START = new Date('2026-10-10T00:00:00').getTime();
 const END = new Date('2027-01-10T00:00:00').getTime();
@@ -13,8 +14,6 @@ function getParts(now: number) {
   const s = Math.floor((diff % 60000) / 1000);
   return { d, h, m, s };
 }
-
-const pad = (n: number) => String(n).padStart(2, '0');
 
 export function Countdown() {
   const [now, setNow] = useState(0);
@@ -49,10 +48,10 @@ export function Countdown() {
 
   const { d, h, m, s } = getParts(now);
   const cells = [
-    { value: now === 0 ? '--' : pad(d), label: 'Days' },
-    { value: now === 0 ? '--' : pad(h), label: 'Hours' },
-    { value: now === 0 ? '--' : pad(m), label: 'Mins' },
-    { value: now === 0 ? '--' : pad(s), label: 'Secs' },
+    { value: d, label: 'Days' },
+    { value: h, label: 'Hours' },
+    { value: m, label: 'Mins' },
+    { value: s, label: 'Secs' },
   ];
 
   return (
@@ -61,7 +60,9 @@ export function Countdown() {
       <div className="countdown-grid" role="timer" aria-label="Time remaining until the internship starts">
         {cells.map((cell) => (
           <div key={cell.label} className="countdown-cell">
-            <span className="countdown-num">{cell.value}</span>
+            <span className="countdown-num">
+              {now === 0 ? '--' : <NumberTicker value={cell.value} padWidth={2} />}
+            </span>
             <span className="countdown-label">{cell.label}</span>
           </div>
         ))}

@@ -1,6 +1,17 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
+
+const OrbitGem = dynamic(() => import('./three/OrbitGem').then((m) => m.OrbitGem), {
+  ssr: false,
+  loading: () => (
+    <div
+      className="aspect-square w-full max-w-sm mx-auto rounded-2xl border border-border bg-surface/50"
+      aria-hidden="true"
+    />
+  ),
+});
 
 export function About() {
   return (
@@ -15,26 +26,29 @@ export function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
-          className="max-w-3xl mx-auto text-center"
+          className="grid lg:grid-cols-[1.15fr_1fr] gap-12 items-center max-w-5xl mx-auto"
         >
-          <span className="kicker">
-            <span className="kicker-dot" aria-hidden="true" />
-            01 // Profile
-          </span>
-          <h2 id="about-heading" className="heading-lg mb-6">
-            About Me
-          </h2>
-          <div className="prose prose-invert max-w-none text-left">
-            <p className="body-lg mb-6">
-              I&apos;m an early-career AI and software developer who recently completed Class XII and is focused on building practical applications and exploring emerging technologies.
-            </p>
-            <p className="body-lg mb-6">
-              My interests span artificial intelligence, Agentic AI, Python, web development, cybersecurity, and software engineering.
-            </p>
-            <p className="body-lg">
-              I actively participate in hackathons and technical challenges while building projects to develop practical technical skills.
-            </p>
+          <div className="text-center lg:text-left">
+            <span className="kicker">
+              <span className="kicker-dot" aria-hidden="true" />
+              01 // Profile
+            </span>
+            <h2 id="about-heading" className="heading-lg mb-6">
+              About Me
+            </h2>
+            <div className="prose prose-invert max-w-none text-left">
+              <p className="body-lg mb-6">
+                I&apos;m an early-career AI and software developer who recently completed Class XII and is focused on building practical applications and exploring emerging technologies.
+              </p>
+              <p className="body-lg mb-6">
+                My interests span artificial intelligence, Agentic AI, Python, web development, cybersecurity, and software engineering.
+              </p>
+              <p className="body-lg">
+                I actively participate in hackathons and technical challenges while building projects to develop practical technical skills.
+              </p>
+            </div>
           </div>
+          <OrbitGem className="aspect-square w-full max-w-sm mx-auto" />
         </motion.div>
       </div>
     </section>

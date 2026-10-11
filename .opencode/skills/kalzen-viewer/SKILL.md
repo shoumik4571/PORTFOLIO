@@ -1,4 +1,5 @@
 ---
+name: kalzen-viewer
 description: Create an interactive 3D model viewer for the web. Use when the user wants to display a single GLB model with orbit controls, lighting, and responsive sizing.
 ---
 
