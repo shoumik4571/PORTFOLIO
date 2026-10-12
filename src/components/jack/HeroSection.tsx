@@ -8,9 +8,10 @@ import { RocketScene } from '../skiper/RocketScene';
 
 const NAV_LINKS = [
   { href: '#about', label: 'About' },
-  { href: '#services', label: 'Price' },
+  { href: '#services', label: 'Services' },
   { href: '#projects', label: 'Projects' },
-  { href: 'mailto:shoumik.aggarwal19@gmail.com', label: 'Contact' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#contact', label: 'Contact' },
 ];
 
 export function HeroSection() {
