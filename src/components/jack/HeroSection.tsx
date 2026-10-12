@@ -65,7 +65,15 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
+          className="flex items-center gap-3 sm:gap-4"
         >
+          <a
+            href="/resume/Shoumik_Aggarwal_Resume.docx"
+            download
+            className="inline-flex items-center justify-center rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-widest px-6 py-3 sm:px-8 sm:py-3.5 text-xs sm:text-sm transition-colors duration-200 hover:bg-[#D7E2EA]/10"
+          >
+            Resume
+          </a>
           <ContactButton href="mailto:shoumik.aggarwal19@gmail.com" />
         </motion.div>
       </div>
