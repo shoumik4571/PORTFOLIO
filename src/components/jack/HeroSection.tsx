@@ -41,9 +41,11 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15, duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-          className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full mt-6 sm:mt-4 md:-mt-5 text-[9.5vw] sm:text-[10vw] md:text-[10.5vw] lg:text-[11vw]"
+          className="hero-heading font-black uppercase tracking-tight leading-[0.88] w-full mt-8 sm:mt-6 px-6 md:px-10 text-[17vw] sm:text-[15vw] lg:text-[12vw]"
         >
-          Hi, i&apos;m shoumik
+          Hi, i&apos;m
+          <br />
+          shoumik
         </motion.h1>
       </div>
 
@@ -72,16 +74,16 @@ export function HeroSection() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-        className="absolute left-1/2 -translate-x-1/2 z-10 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 pointer-events-none"
+        className="absolute z-10 left-1/2 -translate-x-1/2 bottom-32 w-[220px] sm:w-[260px] lg:left-auto lg:translate-x-0 lg:right-16 lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 lg:w-[380px] xl:w-[440px] pointer-events-none"
       >
         <Magnet
           padding={150}
           strength={3}
-          className="w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px] flex justify-center pointer-events-auto"
+          className="flex justify-center pointer-events-auto"
           activeTransition="transform 0.3s ease-out"
           inactiveTransition="transform 0.6s ease-in-out"
         >
-          <RocketScene className="h-[300px] sm:h-[380px] md:h-[440px] lg:h-[500px]" />
+          <RocketScene className="h-[240px] sm:h-[300px] lg:h-[420px]" />
         </Magnet>
       </motion.div>
     </section>
