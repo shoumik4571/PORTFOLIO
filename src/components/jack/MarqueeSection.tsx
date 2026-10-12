@@ -1,35 +1,34 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { SkillIcon } from '../SkillIcon';
 
-const GIFS = [
-  'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',
-  'https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif',
-  'https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif',
-  'https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif',
-  'https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif',
-  'https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif',
-  'https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif',
-  'https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif',
-  'https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif',
-  'https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif',
-  'https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif',
-  'https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif',
-  'https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif',
-  'https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif',
-  'https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif',
-  'https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif',
-  'https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif',
-  'https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif',
-  'https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif',
+const FOCUS = [
+  'Agentic AI',
+  'Generative AI',
+  'Cybersecurity',
+  'Web Development',
+  'Cloud Computing',
+  'Python',
+  'Machine Learning',
+  'Prompt Engineering',
 ];
 
-const ROW_1 = GIFS.slice(0, 11);
-const ROW_2 = GIFS.slice(11);
+const STACK = [
+  'Python',
+  'JavaScript',
+  'TypeScript',
+  'React',
+  'Next.js',
+  'Tailwind CSS',
+  'Firebase',
+  'Git',
+  'GitHub',
+  'HTML',
+  'CSS',
+];
 
-function MarqueeRow({ images, direction }: { images: string[]; direction: 1 | -1 }) {
+function ScrollRow({ children, direction }: { children: ReactNode; direction: 1 | -1 }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const [x, setX] = useState(0);
 
@@ -63,34 +62,46 @@ function MarqueeRow({ images, direction }: { images: string[]; direction: 1 | -1
     };
   }, [direction]);
 
-  const tripled = [...images, ...images, ...images];
-
   return (
     <div ref={wrapRef} className="overflow-hidden">
-      <div className="flex gap-3 w-max" style={{ transform: `translateX(${x}px)`, willChange: 'transform' }}>
-        {tripled.map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            width={420}
-            height={270}
-            className="w-[420px] h-[270px] rounded-2xl object-cover shrink-0"
-          />
-        ))}
+      <div className="flex gap-3 w-max items-center" style={{ transform: `translateX(${x}px)`, willChange: 'transform' }}>
+        {children}
       </div>
     </div>
   );
 }
 
 export function MarqueeSection() {
+  const row1 = [...FOCUS, ...FOCUS, ...FOCUS];
+  const row2 = [...STACK, ...STACK, ...STACK];
+
   return (
-    <section className="bg-[#0C0C0C] pt-24 sm:pt-32 md:pt-40 pb-10" aria-hidden="true">
-      <div className="flex flex-col gap-3">
-        <MarqueeRow images={ROW_1} direction={1} />
-        <MarqueeRow images={ROW_2} direction={-1} />
+    <section className="bg-[#0C0C0C] pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden" aria-label="Focus areas and tech stack marquee">
+      <div className="flex flex-col gap-6 sm:gap-8">
+        <ScrollRow direction={1}>
+          {row1.map((item, i) => (
+            <span
+              key={i}
+              aria-hidden={i >= FOCUS.length}
+              className="font-black uppercase whitespace-nowrap leading-none text-5xl sm:text-6xl md:text-7xl"
+              style={{ color: 'transparent', WebkitTextStroke: '1px rgba(215, 226, 234, 0.35)' }}
+            >
+              {item} <span className="text-[#00d4aa]" style={{ WebkitTextStroke: '0' }}>✦</span>
+            </span>
+          ))}
+        </ScrollRow>
+        <ScrollRow direction={-1}>
+          {row2.map((item, i) => (
+            <span
+              key={i}
+              aria-hidden={i >= STACK.length}
+              className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/[0.04] px-6 py-3 text-[#D7E2EA] font-medium uppercase tracking-widest text-sm sm:text-base whitespace-nowrap"
+            >
+              <SkillIcon name={item} />
+              {item}
+            </span>
+          ))}
+        </ScrollRow>
       </div>
     </section>
   );
