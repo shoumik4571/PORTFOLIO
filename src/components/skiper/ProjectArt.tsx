@@ -7,27 +7,42 @@ import { motion } from 'framer-motion';
  * rising trend for the finance agent, shield + keyhole for the security
  * toolkit. Pure SVG + framer-motion loops (no stock photos).
  */
-export function ProjectArt({ id, label }: { id: string; label: string }) {
+export function ProjectArt({
+  id,
+  label,
+  variant = 'main',
+  tall = false,
+  className = '',
+}: {
+  id: string;
+  label: string;
+  variant?: 'main' | 'detail';
+  tall?: boolean;
+  className?: string;
+}) {
   return (
-    <div className="overflow-hidden rounded-lg border border-border -mx-1 bg-surface-elevated/60">
-      <div className="relative aspect-video w-full">
+    <div className={`overflow-hidden rounded-lg border border-border -mx-1 bg-surface-elevated/60 ${className}`}>
+      <div className={`relative w-full ${tall ? 'h-full min-h-[320px]' : 'aspect-video'}`}>
         <div
           className="absolute inset-0"
           style={{ background: 'radial-gradient(70% 90% at 50% 110%, rgba(0, 212, 170, 0.14), transparent 70%)' }}
           aria-hidden="true"
         />
-        {id === 'krishisense-ai' && <AgriScene />}
-        {id === 'buy-or-wait' && <FinanceScene />}
-        {id === 'password-security-toolkit' && <SecurityScene />}
+        {id === 'krishisense-ai' && <AgriScene detail={variant === 'detail'} />}
+        {id === 'buy-or-wait' && <FinanceScene detail={variant === 'detail'} />}
+        {id === 'password-security-toolkit' && <SecurityScene detail={variant === 'detail'} />}
         <span className="sr-only">{label}</span>
       </div>
     </div>
   );
 }
 
-function AgriScene() {
+const DETAIL_ZOOM = 'translate(-140 -40) scale(1.7)';
+
+function AgriScene({ detail = false }: { detail?: boolean }) {
   return (
-    <svg viewBox="0 0 400 225" className="absolute inset-0 h-full w-full" role="presentation">
+    <svg viewBox="0 0 400 225" className="absolute inset-0 h-full w-full" role="presentation" preserveAspectRatio={detail ? 'xMidYMid slice' : 'xMidYMid meet'}>
+      <g transform={detail ? DETAIL_ZOOM : undefined}>
       <defs>
         <linearGradient id="art-leaf" x1="0" y1="1" x2="1" y2="0">
           <stop offset="0%" stopColor="#00d4aa" />
@@ -78,13 +93,15 @@ function AgriScene() {
           transition={{ duration: 3, repeat: Infinity, delay: i * 0.7, ease: 'easeInOut' }}
         />
       ))}
+      </g>
     </svg>
   );
 }
 
-function FinanceScene() {
+function FinanceScene({ detail = false }: { detail?: boolean }) {
   return (
-    <svg viewBox="0 0 400 225" className="absolute inset-0 h-full w-full" role="presentation">
+    <svg viewBox="0 0 400 225" className="absolute inset-0 h-full w-full" role="presentation" preserveAspectRatio={detail ? 'xMidYMid slice' : 'xMidYMid meet'}>
+      <g transform={detail ? DETAIL_ZOOM : undefined}>
       {/* bars */}
       {[52, 84, 66, 108, 92, 132].map((hgt, i) => (
         <motion.rect
@@ -127,13 +144,15 @@ function FinanceScene() {
           <text x={104 + i * 190} y={59 + i * 8} textAnchor="middle" fontSize="16" fontWeight="700" fill="#8b7cf6" fontFamily="monospace">$</text>
         </motion.g>
       ))}
+      </g>
     </svg>
   );
 }
 
-function SecurityScene() {
+function SecurityScene({ detail = false }: { detail?: boolean }) {
   return (
-    <svg viewBox="0 0 400 225" className="absolute inset-0 h-full w-full" role="presentation">
+    <svg viewBox="0 0 400 225" className="absolute inset-0 h-full w-full" role="presentation" preserveAspectRatio={detail ? 'xMidYMid slice' : 'xMidYMid meet'}>
+      <g transform={detail ? DETAIL_ZOOM : undefined}>
       <defs>
         <linearGradient id="art-shield" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#1c1c1f" />
@@ -174,6 +193,7 @@ function SecurityScene() {
           {i % 2 ? '1' : '0'}
         </motion.text>
       ))}
+      </g>
     </svg>
   );
 }

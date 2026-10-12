@@ -21,7 +21,7 @@
   --color-accentMuted: #00d4aa20;
   --color-iris: #8b7cf6;
 
-  --font-sans: Inter, system-ui, -apple-system, sans-serif;
+  --font-sans: Kanit, system-ui, -apple-system, sans-serif;
   --font-mono: JetBrains Mono, Fira Code, monospace;
 
   --text-caption: 0.75rem;
@@ -357,6 +357,16 @@
     background: linear-gradient(to right, var(--color-accent), var(--color-accent-hover));
     -webkit-background-clip: text;
     background-clip: text;
+    color: transparent;
+  }
+
+  /* ---------- Jack hero layer ---------- */
+
+  .hero-heading {
+    background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     color: transparent;
   }
 

@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Kanit, JetBrains_Mono } from 'next/font/google';
 import { MotionProvider } from '@/components/MotionProvider';
 import './globals.css';
 
-const inter = Inter({
+const kanit = Kanit({
   subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
   display: 'swap',
   variable: '--font-sans',
 });
@@ -57,7 +58,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${kanit.variable} ${jetbrainsMono.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
