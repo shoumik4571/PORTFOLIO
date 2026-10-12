@@ -51,7 +51,7 @@ export function HeroSection() {
 
       <div className="flex-1" />
 
-      <div className="flex justify-between items-end pb-7 sm:pb-8 md:pb-10 px-6 md:px-10">
+      <div className="flex justify-between items-end gap-3 flex-wrap pb-7 sm:pb-8 md:pb-10 px-6 md:px-10">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -82,7 +82,7 @@ export function HeroSection() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-        className="absolute z-10 left-1/2 -translate-x-1/2 bottom-32 w-[220px] sm:w-[260px] lg:left-auto lg:translate-x-0 lg:right-16 lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 lg:w-[380px] xl:w-[440px] pointer-events-none"
+        className="absolute z-10 left-1/2 -translate-x-1/2 bottom-40 w-[180px] sm:w-[260px] sm:bottom-32 lg:left-auto lg:translate-x-0 lg:right-16 lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 lg:w-[380px] xl:w-[440px] pointer-events-none"
       >
         <Magnet
           padding={150}
@@ -91,7 +91,7 @@ export function HeroSection() {
           activeTransition="transform 0.3s ease-out"
           inactiveTransition="transform 0.6s ease-in-out"
         >
-          <RocketScene className="h-[240px] sm:h-[300px] lg:h-[420px]" />
+          <RocketScene className="h-[200px] sm:h-[300px] lg:h-[420px]" />
         </Magnet>
       </motion.div>
     </section>

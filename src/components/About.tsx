@@ -47,7 +47,7 @@ export function About() {
               <p className="body-lg">
                 I actively participate in hackathons and technical challenges while building projects to develop practical technical skills.
               </p>
-              <dl className="mt-8 flex items-center gap-8 font-mono">
+              <dl className="mt-8 flex items-center gap-6 sm:gap-8 flex-wrap font-mono">
                 {[
                   { value: 3, label: 'Projects' },
                   { value: 3, label: 'Hackathons' },

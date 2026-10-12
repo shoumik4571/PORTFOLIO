@@ -42,10 +42,10 @@ function ProjectCard({
   const num = String(index + 1).padStart(2, '0');
 
   return (
-    <div ref={containerRef} className="h-[85vh] flex items-start justify-center">
+    <div ref={containerRef} className="md:h-[85vh] flex items-start justify-center py-4 md:py-0">
       <motion.article
         style={{ scale, top: `${index * 28}px` }}
-        className="sticky top-24 md:top-32 w-full rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-4 sm:p-6 md:p-8 origin-top"
+        className="md:sticky md:top-24 lg:top-32 w-full rounded-[28px] sm:rounded-[50px] md:rounded-[60px] border-2 border-[#D7E2EA] bg-[#0C0C0C] p-4 sm:p-6 md:p-8 origin-top"
         aria-label={`${title} project card`}
       >
         <div className="flex flex-wrap items-center gap-4 sm:gap-6 mb-4 sm:mb-6">
@@ -63,7 +63,7 @@ function ProjectCard({
           </span>
         </div>
 
-        <div className="grid grid-cols-[40%_60%] gap-3 sm:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-[40%_60%] gap-3 sm:gap-4">
           <div className="flex flex-col gap-3 sm:gap-4">
             <ProjectArt id={id} label={`${title} detail view`} variant="detail" className="mx-0" />
             <div
