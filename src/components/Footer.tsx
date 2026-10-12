@@ -32,14 +32,20 @@ export function Footer() {
       className="border-t border-border bg-transparent overflow-hidden relative z-10"
       role="contentinfo"
     >
-      <div className="watermark-mask pt-10" aria-hidden="true">
-        <div className="watermark-track">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <span key={i} className="watermark-text">
-              SHOUMIK AGGARWAL
-            </span>
-          ))}
+      <div className="tape my-8" aria-hidden="true">
+        <div className="tape-stripes" />
+        <div className="tape-band overflow-hidden">
+          <div className="tape-track">
+            {[0, 1].map((half) => (
+              <span key={half} className="tape-text" aria-hidden={half === 1}>
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <span key={i} className="tape-word">SHOUMIK AGGARWAL ✦&nbsp;</span>
+                ))}
+              </span>
+            ))}
+          </div>
         </div>
+        <div className="tape-stripes" />
       </div>
       <div className="container-custom py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">

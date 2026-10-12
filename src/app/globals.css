@@ -370,6 +370,43 @@
     color: transparent;
   }
 
+  /* ---------- Caution tape ---------- */
+
+  .tape {
+    transform: rotate(-1.5deg) scale(1.03);
+  }
+
+  .tape-stripes {
+    height: 14px;
+    background: repeating-linear-gradient(-45deg, #0a0a0b 0 18px, #f5c518 18px 36px);
+  }
+
+  .tape-band {
+    background: #f5c518;
+    box-shadow: 0 10px 30px -10px rgba(245, 197, 24, 0.35);
+  }
+
+  .tape-track {
+    display: flex;
+    width: max-content;
+    animation: tapeScroll 24s linear infinite;
+  }
+
+  .tape-text {
+    white-space: nowrap;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #0a0a0b;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    line-height: 1;
+    padding: 0.7rem 0;
+  }
+
+  @keyframes tapeScroll {
+    to { transform: translateX(-50%); }
+  }
+
   /* ---------- 3D depth layer ---------- */
 
   /* Readability veil over the fixed DeepSpace canvas: keeps text contrast
@@ -740,6 +777,7 @@
   @media (prefers-reduced-motion: reduce) {
     .ticker-track,
     .watermark-track,
+    .tape-track,
     .aurora-a,
     .aurora-b,
     .cursor-blink,
