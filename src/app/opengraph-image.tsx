@@ -29,7 +29,7 @@ export default async function Image() {
             marginBottom: 24,
           }}
         >
-          {'{S}'} · AI & SOFTWARE DEVELOPER
+          {'{S}'} · Aspiring Cloud Solution Architect
         </div>
         <div style={{ fontSize: 96, fontWeight: 700, color: '#fafafa', lineHeight: 1.05 }}>
           SHOUMIK
@@ -38,7 +38,7 @@ export default async function Image() {
           AGGARWAL
         </div>
         <div style={{ fontSize: 28, color: '#a1a1aa', marginTop: 28 }}>
-          AI · Web Development · Cybersecurity
+          AI · Cloud Computing · Web Development
         </div>
       </div>
     ),

@@ -17,9 +17,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Shoumik Aggarwal | AI & Software Developer',
-  description: 'Portfolio of Shoumik Aggarwal, an early-career AI and software developer building projects across artificial intelligence, web development, and modern software technologies.',
-  keywords: ['AI Developer', 'Software Developer', 'Python', 'JavaScript', 'React', 'Next.js', 'Machine Learning', 'Web Development', 'Portfolio'],
+  title: 'Shoumik Aggarwal | Aspiring Cloud Solution Architect',
+  description: 'Portfolio of Shoumik Aggarwal, a student and aspiring Cloud Solution Architect building projects across AI, cloud computing, web development, and modern software technologies.',
+  keywords: ['Cloud Solution Architect', 'AI Engineer', 'Software Developer', 'Python', 'JavaScript', 'React', 'Next.js', 'Cloud Computing', 'Web Development', 'Portfolio', 'Student'],
   authors: [{ name: 'Shoumik Aggarwal' }],
   creator: 'Shoumik Aggarwal',
   publisher: 'Shoumik Aggarwal',
@@ -28,14 +28,14 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://shoumikaggarwal.dev',
-    title: 'Shoumik Aggarwal | AI & Software Developer',
-    description: 'Portfolio of Shoumik Aggarwal, an early-career AI and software developer building projects across artificial intelligence, web development, and modern software technologies.',
+    title: 'Shoumik Aggarwal | Aspiring Cloud Solution Architect',
+    description: 'Portfolio of Shoumik Aggarwal, a student and aspiring Cloud Solution Architect building projects across AI, cloud computing, web development, and modern software technologies.',
     siteName: 'Shoumik Aggarwal Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Shoumik Aggarwal | AI & Software Developer',
-    description: 'Portfolio of Shoumik Aggarwal, an early-career AI and software developer building projects across artificial intelligence, web development, and modern software technologies.',
+    title: 'Shoumik Aggarwal | Aspiring Cloud Solution Architect',
+    description: 'Portfolio of Shoumik Aggarwal, a student and aspiring Cloud Solution Architect building projects across AI, cloud computing, web development, and modern software technologies.',
   },
   icons: {
     icon: '/favicon.ico',

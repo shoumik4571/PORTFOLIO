@@ -8,7 +8,7 @@ import { RocketScene } from '../skiper/RocketScene';
 
 const NAV_LINKS = [
   { href: '#about', label: 'About' },
-  { href: '#services', label: 'Services' },
+  { href: '#services', label: 'Focus Areas' },
   { href: '#projects', label: 'Projects' },
   { href: '#skills', label: 'Skills' },
   { href: '#contact', label: 'Contact' },
@@ -59,7 +59,7 @@ export function HeroSection() {
           className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug max-w-[160px] sm:max-w-[220px] md:max-w-[260px]"
           style={{ fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}
         >
-          An AI developer driven by crafting practical and intelligent software
+          Aspiring Cloud Solution Architect
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
