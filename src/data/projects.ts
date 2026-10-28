@@ -64,6 +64,21 @@ export const projects: Project[] = [
     imagePlaceholder: 'Financial decision agent processing payment forecasts',
     filters: ['ai', 'python', 'software'],
   },
+  {
+    id: 'password-security-toolkit',
+    title: 'PASSWORD SECURITY TOOLKIT',
+    category: 'Python / Security Tooling',
+    description:
+      'A Python command-line application for checking password strength, generating secure passwords, and detecting commonly used passwords.',
+    technologies: ['Python'],
+    problem:
+      'Weak and reused passwords are a common attack vector, and users need a simple offline way to evaluate password strength and generate secure alternatives.',
+    solution:
+      'An offline CLI tool that scores passwords 0–100 on length, character variety, and predictable patterns, generates cryptographically secure passwords with the secrets module, and checks entries against a local common-password list. No third-party dependencies; nothing is stored or transmitted.',
+    githubUrl: 'https://github.com/shoumik4571/Password-Security-Toolkit',
+    imagePlaceholder: 'Terminal interface showing password strength analysis',
+    filters: ['python', 'software'],
+  },
 ];
 
 export const projectFilters = [
