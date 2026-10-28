@@ -20,11 +20,16 @@ const FOCUS_AREAS = [
   },
   {
     n: '04',
+    name: 'Cloud Computing',
+    description: 'Deploying and scaling applications on cloud platforms — Firebase, Vercel, and modern serverless architectures.',
+  },
+  {
+    n: '05',
     name: 'Automation & Agents',
     description: 'Scripts and AI agents that remove repetitive work — scheduling, data pipelines, and intelligent workflows.',
   },
   {
-    n: '05',
+    n: '06',
     name: 'Prompt Engineering',
     description: 'Designing reliable prompts, evaluation loops, and LLM workflows that behave predictably in production.',
   },
