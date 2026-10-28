@@ -94,7 +94,7 @@ export function Hero() {
               className="body text-textMuted max-w-md font-mono text-[0.9rem]"
             >
               <span className="text-accent">$</span> Early-career developer focused on AI, software
-              development, web technologies, and cybersecurity.
+              development, and web technologies.
             </motion.p>
 
             <motion.div

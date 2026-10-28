@@ -15,6 +15,23 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 'talverin',
+    title: 'TALVERIN',
+    category: 'AI / Web Development',
+    description:
+      'AI-powered code review and analysis platform that helps developers catch bugs early and improve code quality using LLMs. Built for NVIDIA × Nebius Global AI Hackathon.',
+    technologies: ['Next.js', 'TypeScript', 'NVIDIA AI', 'Gemini AI', 'Tailwind CSS'],
+    additionalInfo: 'Built for NVIDIA × Nebius Global AI Hackathon. An AI-powered code review platform that analyzes code changes, catches bugs early, and suggests improvements using LLMs.',
+    problem:
+      'Developers spend significant time reviewing code manually, and bugs often slip through to production. Traditional static analysis tools lack contextual understanding of code intent.',
+    solution:
+      'An AI-powered code review platform that uses LLMs to analyze pull requests, identify potential bugs, security vulnerabilities, and code quality issues, providing actionable feedback directly in the development workflow.',
+    githubUrl: 'https://github.com/shoumik4571/talverin',
+    liveDemoUrl: 'https://talverin.vercel.app',
+    imagePlaceholder: 'Talverin AI code review platform dashboard',
+    filters: ['ai', 'web-development', 'software'],
+  },
+  {
     id: 'krishisense-ai',
     title: 'KRISHISENSE AI',
     category: 'AI / Web Development',
@@ -47,21 +64,6 @@ export const projects: Project[] = [
     imagePlaceholder: 'Financial decision agent processing payment forecasts',
     filters: ['ai', 'python', 'software'],
   },
-  {
-    id: 'password-security-toolkit',
-    title: 'PASSWORD SECURITY TOOLKIT',
-    category: 'Cybersecurity / Python',
-    description:
-      'A Python command-line application for checking password strength, generating secure passwords, and detecting commonly used passwords.',
-    technologies: ['Python'],
-    problem:
-      'Weak and reused passwords are a common attack vector, and users need a simple offline way to evaluate password strength and generate secure alternatives.',
-    solution:
-      'An offline CLI tool that scores passwords 0–100 on length, character variety, and predictable patterns, generates cryptographically secure passwords with the secrets module, and checks entries against a local common-password list. No third-party dependencies; nothing is stored or transmitted.',
-    githubUrl: 'https://github.com/shoumik4571/Password-Security-Toolkit',
-    imagePlaceholder: 'Terminal interface showing password strength analysis',
-    filters: ['python', 'cybersecurity', 'software'],
-  },
 ];
 
 export const projectFilters = [
@@ -69,6 +71,5 @@ export const projectFilters = [
   { id: 'ai', label: 'AI' },
   { id: 'web-development', label: 'Web Development' },
   { id: 'python', label: 'Python' },
-  { id: 'cybersecurity', label: 'Cybersecurity' },
   { id: 'software', label: 'Software' },
 ];

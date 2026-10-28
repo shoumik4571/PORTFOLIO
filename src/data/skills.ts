@@ -17,15 +17,11 @@ export const skillCategories: SkillCategory[] = [
     skills: ['Web Development', 'React', 'Next.js', 'Tailwind CSS', 'REST APIs', 'Firebase', 'Git', 'GitHub'],
   },
   {
-    category: 'CYBERSECURITY',
-    skills: ['Cybersecurity Fundamentals', 'Python for Cybersecurity'],
-  },
-  {
     category: 'TOOLS',
     skills: ['Git', 'GitHub', 'Microsoft Excel'],
   },
   {
     category: 'CURRENTLY LEARNING',
-    skills: ['Cloud Computing', 'Advanced AI Agents', 'Cybersecurity', 'Software Engineering'],
+    skills: ['Cloud Computing', 'Advanced AI Agents', 'Software Engineering'],
   },
 ];

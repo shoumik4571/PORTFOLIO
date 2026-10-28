@@ -18,8 +18,8 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: 'Shoumik Aggarwal | AI & Software Developer',
-  description: 'Portfolio of Shoumik Aggarwal, an early-career AI and software developer building projects across artificial intelligence, web development, cybersecurity, and modern software technologies.',
-  keywords: ['AI Developer', 'Software Developer', 'Python', 'JavaScript', 'React', 'Next.js', 'Cybersecurity', 'Machine Learning', 'Web Development', 'Portfolio'],
+  description: 'Portfolio of Shoumik Aggarwal, an early-career AI and software developer building projects across artificial intelligence, web development, and modern software technologies.',
+  keywords: ['AI Developer', 'Software Developer', 'Python', 'JavaScript', 'React', 'Next.js', 'Machine Learning', 'Web Development', 'Portfolio'],
   authors: [{ name: 'Shoumik Aggarwal' }],
   creator: 'Shoumik Aggarwal',
   publisher: 'Shoumik Aggarwal',
@@ -29,13 +29,13 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://shoumikaggarwal.dev',
     title: 'Shoumik Aggarwal | AI & Software Developer',
-    description: 'Portfolio of Shoumik Aggarwal, an early-career AI and software developer building projects across artificial intelligence, web development, cybersecurity, and modern software technologies.',
+    description: 'Portfolio of Shoumik Aggarwal, an early-career AI and software developer building projects across artificial intelligence, web development, and modern software technologies.',
     siteName: 'Shoumik Aggarwal Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Shoumik Aggarwal | AI & Software Developer',
-    description: 'Portfolio of Shoumik Aggarwal, an early-career AI and software developer building projects across artificial intelligence, web development, cybersecurity, and modern software technologies.',
+    description: 'Portfolio of Shoumik Aggarwal, an early-career AI and software developer building projects across artificial intelligence, web development, and modern software technologies.',
   },
   icons: {
     icon: '/favicon.ico',

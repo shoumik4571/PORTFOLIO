@@ -46,7 +46,7 @@ export function ProjectGrid() {
                 Featured Projects
               </h2>
               <p className="body text-textSecondary max-w-xl">
-                Projects I&apos;ve built while exploring AI, software development, and cybersecurity.
+                Projects I&apos;ve built while exploring AI, software development, and modern web technologies.
               </p>
             </div>
 

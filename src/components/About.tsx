@@ -42,7 +42,7 @@ export function About() {
                 I&apos;m an early-career AI and software developer who recently completed Class XII and is focused on building practical applications and exploring emerging technologies.
               </p>
               <p className="body-lg mb-6">
-                My interests span artificial intelligence, Agentic AI, Python, web development, cybersecurity, and software engineering.
+                My interests span artificial intelligence, Agentic AI, Python, web development, and software engineering.
               </p>
               <p className="body-lg">
                 I actively participate in hackathons and technical challenges while building projects to develop practical technical skills.

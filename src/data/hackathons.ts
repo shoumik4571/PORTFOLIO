@@ -31,6 +31,9 @@ export const hackathons: Hackathon[] = [
     id: 'nvidia-nebius-ai-hackathon',
     name: 'NVIDIA × NEBIUS GLOBAL AI HACKATHON',
     role: 'Participant / Developer',
-    description: 'Participated in the NVIDIA × Nebius Global AI Hackathon and worked on an AI-based project.',
+    description: 'Built Talverin — an AI-powered code review and analysis platform that helps developers catch bugs early and improve code quality using LLMs, built with Next.js, TypeScript, and NVIDIA AI technologies.',
+    project: 'Talverin',
+    projectUrl: 'https://github.com/shoumik4571/talverin',
+    date: 'September 2026',
   },
 ];

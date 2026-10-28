@@ -53,7 +53,7 @@ export function AboutSection() {
 
         <div className="flex flex-col items-center gap-16 sm:gap-20 md:gap-24">
           <AnimatedText
-            text="With hands-on experience across AI, web development, and cybersecurity, i focus on building practical software — from AI agents to full-stack apps — and i truly enjoy working with people who want to ship useful technology. Let's build something incredible together!"
+            text="With hands-on experience across AI, web development, and software engineering, i focus on building practical software — from AI agents to full-stack apps — and i truly enjoy working with people who want to ship useful technology. Let's build something incredible together!"
             className="text-[#D7E2EA] font-medium text-center leading-relaxed max-w-[560px]"
           />
 
@@ -61,8 +61,8 @@ export function AboutSection() {
             {[
               { k: 'Based', v: 'Ghaziabad, Uttar Pradesh — open to remote work' },
               { k: 'Education', v: 'Class XII (CBSE, Science) · PTE Academic 89' },
-              { k: 'Focus', v: 'Agentic AI · Generative AI · Cybersecurity' },
-              { k: 'Status', v: 'Cyber Security Intern @ Persevex · Oct 2026' },
+              { k: 'Focus', v: 'Agentic AI · Generative AI · AI Engineering' },
+              { k: 'Status', v: 'AI Intern @ Persevex · Ongoing' },
             ].map((item, i) => (
               <FadeIn key={item.k} delay={0.1 + i * 0.08} y={20}>
                 <div className="rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4">

@@ -19,10 +19,10 @@ export const experience: Experience[] = [
   {
     id: 'persevex-internship',
     organization: 'PERSEVEX',
-    role: 'Cyber Security Intern — Persevex',
-    program: 'Training and Internship Program',
-    field: 'Cyber Security',
-    status: 'Upcoming',
+    role: 'AI Intern — Persevex',
+    program: 'AI Training and Internship Program',
+    field: 'Artificial Intelligence',
+    status: 'Ongoing',
     duration: '3 Months',
     structure: '1 month of training followed by 2 months of internship',
     mode: 'Remote',
@@ -30,8 +30,8 @@ export const experience: Experience[] = [
     endDate: '10 January 2027',
     supervisor: 'Mr. Shanmukh Shekar K C',
     description:
-      'Accepted into a 3-month Training and Internship Program in Cyber Security at Persevex, consisting of one month of training followed by two months of remote internship experience.',
-    isUpcoming: true,
+      'Accepted into a 3-month AI Training and Internship Program at Persevex, consisting of one month of training followed by two months of remote internship experience. Working on AI-powered solutions including LLM integration, prompt engineering, and building AI-powered applications.',
+    isUpcoming: false,
   },
 ];
 

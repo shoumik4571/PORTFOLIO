@@ -15,11 +15,6 @@ const focusAreas = [
     description: 'Learning to build with large language models and AI APIs such as Gemini.',
   },
   {
-    id: 'cybersecurity',
-    title: 'Cybersecurity',
-    description: 'Learning security fundamentals and building Python-based security tooling.',
-  },
-  {
     id: 'software-development',
     title: 'Software Development',
     description: 'Building full-stack applications with Next.js, TypeScript, and modern tooling.',
