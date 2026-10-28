@@ -126,7 +126,7 @@ export function Contact() {
           className="mt-16 text-center"
         >
           <p className="body-sm text-textMuted">
-            Based in Ghaziabad, Uttar Pradesh — open to remote opportunities.
+            Based in Meerut, Uttar Pradesh — open to remote opportunities.
           </p>
         </motion.div>
       </div>

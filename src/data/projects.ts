@@ -17,19 +17,19 @@ export const projects: Project[] = [
   {
     id: 'talverin',
     title: 'TALVERIN',
-    category: 'AI / Web Development',
+    category: 'AI / Desktop App',
     description:
-      'AI-powered code review and analysis platform that helps developers catch bugs early and improve code quality using LLMs. Built for NVIDIA × Nebius Global AI Hackathon.',
-    technologies: ['Next.js', 'TypeScript', 'NVIDIA AI', 'Gemini AI', 'Tailwind CSS'],
-    additionalInfo: 'Built for NVIDIA × Nebius Global AI Hackathon. An AI-powered code review platform that analyzes code changes, catches bugs early, and suggests improvements using LLMs.',
+      'Local-first Personal AI Assistant that lives in your menubar and actually controls your app. Built with NVIDIA Nemotron-3.5-Lightning via Nebius Token Factory for the NVIDIA × Nebius Global AI Hackathon.',
+    technologies: ['Next.js 15', 'React 19', 'Electron 30', 'TypeScript', 'NVIDIA Nemotron', 'Nebius Token Factory', 'Tavily API', 'Tailwind CSS', 'Framer Motion'],
+    additionalInfo: 'Built for NVIDIA × Nebius Global AI Hackathon (Personal AI Track). A local-first desktop AI assistant that controls your app via natural language — schedules, goals, alarms, day briefings, and full app control.',
     problem:
-      'Developers spend significant time reviewing code manually, and bugs often slip through to production. Traditional static analysis tools lack contextual understanding of code intent.',
+      'AI assistants today are chat-only — they can\'t actually control your apps, manage your schedule, or trigger system-level actions. You still have to manually click, drag, and configure everything.',
     solution:
-      'An AI-powered code review platform that uses LLMs to analyze pull requests, identify potential bugs, security vulnerabilities, and code quality issues, providing actionable feedback directly in the development workflow.',
-    githubUrl: 'https://github.com/shoumik4571/talverin',
+      'A local-first Electron desktop AI assistant powered by NVIDIA Nemotron-3.5-Lightning via Nebius Token Factory. Controls your entire app via chat: schedule management, goal→syllabus auto-generation via Tavily+Nemotron, native Electron alarms that work even when minimized, day briefings/reports, full app settings control, and image/file upload for context.',
+    githubUrl: 'https://github.com/shoumik4571/Talverin',
     liveDemoUrl: 'https://talverin.vercel.app',
-    imagePlaceholder: 'Talverin AI code review platform dashboard',
-    filters: ['ai', 'web-development', 'software'],
+    imagePlaceholder: 'Talverin desktop AI assistant with menubar, schedule, goals, and chat interface',
+    filters: ['ai', 'software', 'desktop-app'],
   },
   {
     id: 'krishisense-ai',

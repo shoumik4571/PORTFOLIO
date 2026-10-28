@@ -59,7 +59,7 @@ export function AboutSection() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full max-w-[640px] text-left">
             {[
-              { k: 'Based', v: 'Ghaziabad, Uttar Pradesh — open to remote work' },
+              { k: 'Based', v: 'Meerut, Uttar Pradesh — open to remote work' },
               { k: 'Education', v: 'Class XII (CBSE, Science) · PTE Academic 89' },
               { k: 'Focus', v: 'Agentic AI · Generative AI · AI Engineering' },
               { k: 'Status', v: 'AI Intern @ Persevex · Ongoing' },
